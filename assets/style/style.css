@@ -2,7 +2,6 @@
     DU Web Dev Bootcamp 2017/2018 - Week-8 Homework - Project 1
 
 Fonts Available:
-
     font-family: 'Indie Flower', sans-serif;
     font-family: 'Permanent Marker', sans-serif;
     font-family: 'Chewy', sans-serif;
@@ -18,6 +17,7 @@ Fonts Available:
  */
 
 
+
 body {
     background-color: rgba(0, 0, 0, 0.7);
     background-image: url("../images/bkgrnd3.jpg");
@@ -25,6 +25,9 @@ body {
     color: rgba(229, 228, 226, 0.75);
     font-family: 'Sirin Stencil', sans-serif;
 }
+
+
+/* Header */
 
 .jumbotron {
     background-color: rgba(0, 0, 0, 0.7);
@@ -53,13 +56,15 @@ body {
         0 20px 20px rgba(0, 0, 0, 0.801);
 }
 
-
 .subTitle {
     font-family: 'Indie Flower', sans-serif;
     font-size: 33px;
     font-weight: bolder;
     margin-top: -35px;
 }
+
+
+/* Body */
 
 .panel {
     background-color: rgba(0, 0, 0, 0.75);
@@ -114,7 +119,9 @@ input {
     padding: 16px;
 }
 
+
 /* ************************* */
+
 
 /* Responsive Changes */
 
