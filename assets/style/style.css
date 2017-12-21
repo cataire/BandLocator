@@ -132,7 +132,7 @@ input {
 @media screen and (max-width:991px) {
 
     .subTitle {
-        margin-bottom: -20px;
+        margin-bottom: -30px;
     }
 
     .panelTwo {
@@ -141,8 +141,24 @@ input {
     
     #footer {
         position: relative;
-        width: 95%;
+        width: 96%;
         margin-left: 15px;
+    }
+
+}
+
+@media screen and (max-width:767px) {
+
+    .title {
+        margin-top: -20px;
+    }
+
+    .subTitle {
+        margin-bottom: -10px;
+    }
+
+    #footer {
+        width: 95%;
     }
 
 }
