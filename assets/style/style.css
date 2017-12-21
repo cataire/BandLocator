@@ -130,15 +130,21 @@ input {
 /* Responsive Changes */
 
 @media screen and (max-width:991px) {
+
+    .subTitle {
+        margin-bottom: -20px;
+    }
+
+    .panelTwo {
+        margin-bottom: 20px;
+    }
+    
     #footer {
         position: relative;
         width: 95%;
         margin-left: 15px;
     }
 
-    .panelTwo {
-        margin-bottom: 20px;
-    }
 }
 
 @media screen and (max-width:475px) {
@@ -163,8 +169,7 @@ input {
     }
 
     #footerText p {
-        font-size: 11px;
+        font-size: 10px;
     }
 
 }
-
