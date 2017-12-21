@@ -104,8 +104,7 @@ input {
 
 /* Footer */
 
-#footerBox {
-    margin-top: 30px;
+#footer {
     height: 50px;
     width: 100%;
     position: fixed;
@@ -130,6 +129,18 @@ input {
 
 /* Responsive Changes */
 
+@media screen and (max-width:991px) {
+    #footer {
+        position: relative;
+        width: 95%;
+        margin-left: 15px;
+    }
+
+    .panelTwo {
+        margin-bottom: 20px;
+    }
+}
+
 @media screen and (max-width:475px) {
 
     .title {
@@ -145,6 +156,14 @@ input {
 
     .panel {
         font-size: 1.1em;
+    }
+
+    #footer {
+        width: 93%;
+    }
+
+    #footerText p {
+        font-size: 11px;
     }
 
 }
