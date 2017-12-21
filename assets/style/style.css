@@ -93,6 +93,14 @@ body {
     font-size: 20px;
 }
 
+form {
+    font-size: 18px;
+}
+
+input {
+    color: black;
+}
+
 
 /* BEGIN FOOTER */
 
