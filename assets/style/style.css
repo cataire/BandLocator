@@ -94,7 +94,8 @@ body {
 }
 
 form {
-    font-size: 18px;
+    font-family: sans-serif;
+    font-size: 15px;
 }
 
 input {
