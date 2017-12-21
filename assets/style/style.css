@@ -1,37 +1,130 @@
+/* Jeffrey Phelps - DU Web Dev Bootcamp 2017/2018 - Week-8 Homework - Project 1
 
-html {
-  position: relative;
-  min-height: 100%;
-}
+Font Families Available:
 
-body {
-  margin-bottom: 60px;
-}
+    font-family: 'Indie Flower', sans-serif;
+    font-family: 'Permanent Marker', sans-serif;
+    font-family: 'Chewy', sans-serif;
+    font-family: 'Freckle Face', sans-serif;
+    font-family: 'Ceviche One', sans-serif;
+    font-family: 'Sedgwick Ave Display', sans-serif;
+    font-family: 'Acme', sans-serif;
+    font-family: 'Rokkitt', sans-serif;
+    font-family: 'Londrina Sketch', sans-serif;
+    font-family: 'Ranga', sans-serif;
+    font-family: 'Sirin Stencil', sans-serif;
+    font-family: 'Varela', sans-serif;
+ */
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 60px;
-  line-height: 60px;
-  background-color: #d3d3d3;
-  border-top: 5px;
-  border-top-color: red;
-}
-
-.card-header {
-	background-color: #d3d3d3;
-}
 
 body {
-	background-image: url("../images/amazing-brick-wall-background-ppt-12.jpg");
-	height: 100%;
-}
-
-.band-search {
-	margin: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    background-image: url("../images/bkgrnd3.jpg");
+    background-repeat: repeat;
+    color: rgba(229, 228, 226, 0.75);
+    font-family: 'Sirin Stencil', sans-serif;
 }
 
 .jumbotron {
-	padding: 0.5em;
+    background-color: rgba(0, 0, 0, 0.7);
+    margin-top: 20px;
+    text-align: center;
 }
+
+.title {
+    font-family: 'Sedgwick Ave Display', sans-serif;
+    color: rgba(255, 215, 0, 0.8);
+    font-size: 80px;
+    font-weight: bolder;
+    text-shadow: 
+        0 1px 0 #ccc,
+        0 2px 0 #c9c9c9,
+        0 3px 0 #bbb,
+        0 4px 0 #b9b9b9,
+        0 5px 0 #aaa,
+        0 6px 1px rgba(0,0,0,.1),
+        0 0 5px rgba(0,0,0,.1),
+        0 1px 3px rgba(0,0,0,.3),
+        0 3px 5px rgba(0,0,0,.2),
+        0 5px 10px rgba(0,0,0,.25),
+        0 10px 10px rgba(0,0,0,.2),
+        0 20px 20px rgba(0, 0, 0, 0.801);
+
+    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), color-stop(50%, rgba(255,255,255,.8)), to(rgba(0,0,0,1)));
+}
+
+
+/* ************** */
+/* Animated Title */
+
+
+
+/* ************** */
+/* End Animated Title */
+
+
+
+
+.subTitle {
+    font-family: 'Indie Flower', sans-serif;
+    font-size: 33px;
+    font-weight: bolder;
+    margin-top: -30px;
+}
+
+.panel {
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 500px;
+}
+
+.panelTwo {
+    margin-bottom: 70px;
+}
+
+.panel-heading {
+    color: rgba(255, 215, 0, 0.7);
+    border-bottom: 1px solid rgba(229, 228, 226, 0.75);
+    width: 96%;
+    margin-left: 10px;
+}
+
+.panel-title {
+    font-family: 'Indie Flower', sans-serif;
+    font-size: 20px;
+}
+
+
+/* BEGIN FOOTER */
+
+#footerBox {
+    margin-top: 30px;
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: rgba(255, 215, 0, 0.7);
+    text-align: center;
+}
+
+#footer p {
+    font-family: 'Indie Flower', cursive;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 16px;
+}
+
+/* END FOOTER */
+
+/* ************************* */
+
+/* BEGIN RESPONSIVE CHANGES */
+
+@media screen and (max-width:808px) {
+
+    
+
+}
+
+/* END RESPONSIVE CHANGES */

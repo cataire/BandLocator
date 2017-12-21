@@ -1,74 +1,116 @@
+<!-- Jeffrey Phelps - DU Web Dev Bootcamp 2017/2018 - Week-8 Homework - Project 1 -->
+
 <!DOCTYPE html>
-<html>
-<head>
-	<title>My Band Locator</title>
-	<meta charset="utf-8">
-	<link rel="shortcut icon" type="image/png" href="assets/images/guitar.jpg">
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/style/style.css">
-	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
-</head>
-<body>
-	<div class = "container">
-		<div class="jumbotron jumbotron-fluid text-center">
-  			<div class="container">
-    			<h3 class="display-4">When does your favorite band come to your town?</h3>
-    			<p class="lead">Let's find out!</p>
-  			</div>
-		</div>
-	</div>
+<html lang="en-us">
 
-<div class="main">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-6">
-				<div class="card band-info">
-					<h3 class="card-header">Look up a band</h3>
-					<div class="card-block">
-						<form class="band-search">
-						  <div class="col-md-12">
-						    <div class="input-group">
-						      <input type="text" class="form-control" placeholder="Band Name" aria-label="">
-						      <span class="input-group-btn">
-						       <button type="button" class="btn btn-secondary">Find them!</button>
-						      </span>
-						    </div>
-						  </div>
-						</form>
-					</div>
-				</div>
-			</div>	
+    <head>
+        
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+      <title>Code Rocks!</title>
+      
+      <link rel="stylesheet" href="normalize.css" type="text/css" />
+      
+      <!-- Remote Bootstrap CSS Library -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
-			<div class="col-md-6">
-				<div class="card">
-					<h3 class="card-header">Are they coming here?</h3>
+      <!-- Local CSS Stylesheet -->
+      <link rel="stylesheet" href="assets/style/style.css">
 
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+      <!-- Remote Firebase Reference -->
+      <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+      
+      <!-- Remote Moment.js Reference -->
+      <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
-	<footer class="footer text-center">
-          <div class="container">
+      <!-- Remote Google Fonts Reference -->
+      <link href="https://fonts.googleapis.com/css?family=Ceviche+One|Chewy|Freckle+Face|Indie+Flower|
+        Permanent+Marker|Sedgwick+Ave+Display|Acme|Rokkitt|Londrina+Sketch|Ranga|Sirin+Stencil|Varela" rel="stylesheet">
+
+    </head>
+
+    <body>
+
+        <!-- Main Container -->
+        <div class ="container-fluid">
+
+            <!-- Header -->
+            <div class ="jumbotron">
+                <div class="text-center title">Code Rocks!</div> <br>
+                <div class="text-center subTitle">- Super Band Locator -</div>
+            </div>
+
+            <!-- Body -->
             <div class="row">
-              <div class="col-md-12">
-              </div>
+
+                <div class="col-lg-1"></div>
+
+                <div class="col-lg-5">
+
+                    <!-- Current Train Schedule -->
+                    <div class="panel panelOne">
+
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><strong>Side A</strong></h3>
+                        </div>
+
+                        <div class="panel-body">
+                            <h1>Sample Text</h1>
+                            <h2>Sample Text</h2>
+                            <h3>Sample Text</h3>
+                            <h4>Sample Text</h4>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-5">
+                    
+                    <!-- Current Train Schedule -->
+                    <div class="panel panelTwo">
+
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><strong>Side B</strong></h3>
+                        </div>
+
+                        <div class="panel-body">
+                            <h1>Sample Text</h1>
+                            <h2>Sample Text</h2>
+                            <h3>Sample Text</h3>
+                            <h4>Sample Text</h4>
+                        </div>
+
+                    </div>
+
+                </div>
+                
             </div>
-          </div>
-          <div class="footer-copyright">
-            <div class="container">
-            © 2018 Code Rocks Team
+
+        </div>
+
+        <!-- Begin Footer -->
+        <div id="footerBox">
+                
+            <div id="footer">
+                <p>© Copyright Code Rocks! DU Web Dev Bootcamp 2017/2018</p>
             </div>
-          </div>
-        </footer>
 
+        </div>
+        <!-- End Footer -->
 
+        <!-- Remote jQuery Library -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-	<script src="assets/javascript/app.js"></script>
-	
-</body>	
+        <!-- Remote Firebase API -->
+        <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+
+        <!-- Local JavaScript File -->
+        <script src="assets/javascript/app.js"></script>
+
+    </body>
 
 </html>
