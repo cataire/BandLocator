@@ -34,9 +34,10 @@ body {
 
 .title {
     font-family: 'Sedgwick Ave Display', sans-serif;
-    color: rgba(255, 215, 0, 0.8);
+    color: rgba(255, 215, 0, 1);
     font-size: 80px;
     font-weight: bolder;
+    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.7);
     text-shadow: 
         0 1px 0 #ccc,
         0 2px 0 #c9c9c9,
@@ -50,30 +51,18 @@ body {
         0 5px 10px rgba(0,0,0,.25),
         0 10px 10px rgba(0,0,0,.2),
         0 20px 20px rgba(0, 0, 0, 0.801);
-
-    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), color-stop(50%, rgba(255,255,255,.8)), to(rgba(0,0,0,1)));
 }
-
-
-/* ************** */
-/* Animated Title */
-
-
-
-/* End Animated Title */
-/* ************** */
-
 
 
 .subTitle {
     font-family: 'Indie Flower', sans-serif;
     font-size: 33px;
     font-weight: bolder;
-    margin-top: -30px;
+    margin-top: -35px;
 }
 
 .panel {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.75);
     height: 500px;
 }
 
@@ -104,7 +93,7 @@ input {
 }
 
 
-/* BEGIN FOOTER */
+/* Footer */
 
 #footerBox {
     margin-top: 30px;
@@ -125,11 +114,9 @@ input {
     padding: 16px;
 }
 
-/* END FOOTER */
-
 /* ************************* */
 
-/* BEGIN RESPONSIVE CHANGES */
+/* Responsive Changes */
 
 @media screen and (max-width:808px) {
 
@@ -137,4 +124,3 @@ input {
 
 }
 
-/* END RESPONSIVE CHANGES */
