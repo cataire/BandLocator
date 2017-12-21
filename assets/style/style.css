@@ -35,11 +35,12 @@ body {
 }
 
 .title {
+    margin-top: -30px;
     font-family: 'Sedgwick Ave Display', sans-serif;
     color: rgba(255, 215, 0, 1);
     font-size: 80px;
     font-weight: bolder;
-    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.7);
+    -webkit-text-stroke: 2px rgba(0, 0, 0, 0.7);
     text-shadow: 
         0 1px 0 #ccc,
         0 2px 0 #c9c9c9,
@@ -60,6 +61,7 @@ body {
     font-size: 33px;
     font-weight: bolder;
     margin-top: -40px;
+    margin-bottom: -30px;
 }
 
 
