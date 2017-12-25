@@ -18,7 +18,8 @@
       
       <!-- Remote Bootstrap CSS Library -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
       <!-- Local CSS Stylesheet -->
       <link rel="stylesheet" href="assets/style/style.css">
 
@@ -33,14 +34,42 @@
         Permanent+Marker|Sedgwick+Ave+Display|Acme|Rokkitt|Londrina+Sketch|Ranga|Sirin+Stencil|Varela" rel="stylesheet">
 
     </head>
-
-    <body>
+    <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
         <!-- Main Container -->
         <div class ="container-fluid">
 
             <!-- Header -->
             <div class ="jumbotron">
+                <!-- NavBar Sections -->
+                            <nav class="navbar navbar-inverse navbar-fixed-top">
+                              <div class="container-fluid">
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                      <span class="icon-bar"></span>
+                                      <span class="icon-bar"></span>
+                                      <span class="icon-bar"></span>                        
+                                  </button>
+                                  <a class="navbar-brand" href="index.html">Super Band Locator Homepage</a>
+                                </div>
+                                <div>
+                                  <div class="collapse navbar-collapse" id="myNavbar">
+                                    <ul class="nav navbar-nav">
+                                      <li><a href="#section1">Artist Search</a></li>
+                                      <li><a href="#section2">Artist Bio</a></li>
+                                      <li><a href="#section3">Artist Discography</a></li>
+                                      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Google Maps <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                          <li><a href="#section41">Search for Directions</a></li>
+                                          <li><a href="#section42">Map Results</a></li>
+                                        </ul>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                            </nav>
+                         
                 <div class="text-center title">Code Rocks!</div> <br>
                 <div class="text-center subTitle">- Super Band Locator -</div>
             </div>
@@ -62,11 +91,16 @@
                         </div>
 
                         <div class="panel-body">
-                            <form>
-                                Artist:<br>
-                                <input type="text" name="artist" value"artist"> 
-                                <input type="submit" value="Submit">
-                            </form>
+                <form>
+                    <div id="section1"></div>
+                    <div class="form-group">
+                    <label for="userSearch">Artist</label>
+                        <input type="text" id="userSearch"placeholder="Search for an Artist here"required="required">
+                        <input id="addTopic" type="submit" value="Submit">
+                    <button onclick="clearArray();">Clear Search</button>
+                    </div>
+                </form>
+                            <div id="section2"></div>
                             <h1>Sample h1 Text</h1>
                             <h2>Sample h2 Text</h2>
                             <h3>Sample h3 Text</h3>
@@ -90,9 +124,12 @@
                         </div>
 
                         <div class="panel-body">
+                                <div id="section3"></div>
                             <h1>Sample h1 Text</h1>
                             <h2>Sample h2 Text</h2>
+                            <div id="section41"></div>
                             <h3>Sample h3 Text</h3>
+                            <div id="section42"></div>
                             <h4>Sample h4 Text</h4>
                             <br><br>
                             <p>Sample paragraph text</p>
