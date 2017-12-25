@@ -15,8 +15,28 @@ Fonts Available:
     font-family: 'Sirin Stencil', sans-serif;
     font-family: 'Varela', sans-serif;
  */
+ /* NavBar Styling */
+ body {
+    position: relative;
+}
+ul.nav-pills {
+    top: 20px;
+    position: fixed;
+}
+div.col-sm-9 div {
+    height: 250px;
+    font-size: 28px;
+}
+.navbar{
+    margin:20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-family: 'Indie Flower', sans-serif;
+    font-weight: bolder;
+}
 
 
+/* HTML Layout Styling */
 body {
     min-width: 320px;
     background-color: rgba(0, 0, 0, 0.7);
@@ -31,7 +51,7 @@ body {
 
 .jumbotron {
     background-color: rgba(0, 0, 0, 0.75);
-    margin-top: 20px;
+    margin-top: 70px;
     text-align: center;
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
