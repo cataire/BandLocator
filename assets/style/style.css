@@ -35,6 +35,32 @@ div.col-sm-9 div {
     font-weight: bolder;
 }
 
+button,
+#addTopic {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    border-radius: 20%;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    font-family: 'Bangers', cursive;
+    margin: 5px;
+    color:black;
+}
+
+button:hover,
+#addTopic:hover {
+    background-color:rgba(255, 215, 0, 0.7);
+    border-color: rgb(141, 88, 8); /* Green */
+    color: white;
+}
+
+.image {
+    margin-left:500px;
+    height:400px;
+
+}
+
 
 /* HTML Layout Styling */
 body {
