@@ -156,7 +156,7 @@
                             <h2>Sample h2 Text</h2>
                             <div id="section41"></div>
                             <h3>Sample h3 Text</h3>
-                            <div id="section42"></div>
+                            <div id="map"></div>
                             <h4>Sample h4 Text</h4>
                             <br><br>
                             <p>Sample paragraph text</p>
@@ -179,6 +179,22 @@
 
         </div>
 
+       <script>
+         function initMap() {
+        var denver = {lat: 39.7392, lng: -104.9903};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: denver
+        });
+        var marker = new google.maps.Marker({
+          position: denver,
+          map: map
+        });
+      }
+    </script>
+        
+
+
         <!-- Remote jQuery Library -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -187,6 +203,12 @@
 
         <!-- Local JavaScript File -->
         <script src="assets/javascript/app.js"></script>
+
+         <!-- Google Maps API script -->
+
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmYHEQwXA3bucxiXU2-23Dx-PnAOAO6NA&callback=initMap">
+        </script>
 
     </body>
 
