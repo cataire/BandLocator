@@ -7,11 +7,20 @@ $(document).ready(function() {
   //get events locations
   //populate map with markers
 
- 
+	 $("#addTopic").on('click', function(event){
+	 	event.preventDefault();
+	 	var artistName = $("#userSearch").val();
 
+	 	var queryURL = "https://rest.bandsintown.com/artists/" + artistName + "?app_id=codingbootcamp";
+	 	$.ajax({
+	 	url: queryURL,
+	 	method: "GET"
+	 	}).done(function(response){
+	 		console.log(response);
+	 	})
+	 })
 
-
-    });
+ }); //doc ready closing
     
     
 

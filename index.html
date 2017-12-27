@@ -18,7 +18,7 @@
       
       <!-- Remote Bootstrap CSS Library -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
       <!-- Local CSS Stylesheet -->
       <link rel="stylesheet" href="assets/style/style.css">
@@ -95,7 +95,7 @@
                     <div id="section1"></div>
                     <div class="form-group">
                     <label for="userSearch">Artist:</label>
-                        <input type="text" id="userSearch"placeholder="Type search here"required="required">
+                        <input type="text" id="userSearch" placeholder="Type search here"required="required">
                         <input id="addTopic" type="submit" value="Search">
                     <button onclick="clearArray();">Clear</button>
                     </div>
@@ -157,9 +157,7 @@
                             <div id="section41"></div>
                             <h3>Sample h3 Text</h3>
                             <div id="map"></div>
-                            <h4>Sample h4 Text</h4>
-                            <br><br>
-                            <p>Sample paragraph text</p>
+                            
                         </div>
 
                     </div>
@@ -230,8 +228,6 @@
         for (var index = 0; index < locations.length; index++) {
           addMarker(locations[index]);
         }
-        
-      
 
       }
     </script>
@@ -248,7 +244,6 @@
         <script src="assets/javascript/app.js"></script>
 
          <!-- Google Maps API script -->
-
         <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmYHEQwXA3bucxiXU2-23Dx-PnAOAO6NA&callback=initMap">
         </script>
