@@ -2,7 +2,8 @@
 
 function searchBandsInTown(artist) {
 
-var queryURL = "http://www.bandsintown.com/artist/" + artist + "?came_from=67";
+var queryURL = "https://rest.bandsintown.com/artists/" + artist + "?app_id=codingbootcamp";
+// "https://rest.bandsintown.com/artists/" + artist + "?came_from=67";
 $.ajax({
 	url: queryURL,
 	method: "GET"
