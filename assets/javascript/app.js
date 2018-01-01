@@ -21,7 +21,9 @@ var upcomingEvents = $("<h2>").text(response.upcoming_event_count + " upcoming e
 var goToArtist = $("<a>").attr("href", response.url).text(" Upcoming Tour Dates");
 
 	$("#artist-div").empty();
-	$("#artist-div").append(artistURL, artistImage, upcomingEvents, goToArtist);
+	$("#artistImage").empty();
+	$("#artist-div").append(artistURL, upcomingEvents, goToArtist);
+	$("#artistImage").append(artistImage);
 
 });
 }
@@ -32,6 +34,7 @@ var inputArtist = $("#artist-input").val().trim();
 
 	searchBandsInTown(inputArtist);
 });
+
     });
     
     
