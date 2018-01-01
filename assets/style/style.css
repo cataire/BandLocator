@@ -83,6 +83,7 @@ body {
 }
 
 .title {
+
     margin-top: -30px;
     font-family: 'Sedgwick Ave Display', sans-serif;
     color: rgba(255, 215, 0, 1);
@@ -126,6 +127,7 @@ body {
 }
 
 .panel-heading {
+    text-decoration: none;
     color: rgba(255, 215, 0, 0.7);
     border-bottom: 1px solid rgba(229, 228, 226, 0.75);
     width: 96%;
@@ -147,6 +149,11 @@ input {
     margin-top: 3px;
 }
 
+h1 { 
+    text-decoration: none;
+    color: rgba(255, 215, 0, 0.7);
+
+}
 
 /* Footer */
 

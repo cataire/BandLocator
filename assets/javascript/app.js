@@ -22,8 +22,11 @@ var goToArtist = $("<a>").attr("href", response.url).text(" Upcoming Tour Dates"
 
 	$("#artist-div").empty();
 	$("#artistImage").empty();
-	$("#artist-div").append(artistURL, upcomingEvents, goToArtist);
+	$("#artistName").empty();
+	$("#artist-div").append(upcomingEvents, goToArtist);
 	$("#artistImage").append(artistImage);
+	$("#artistName").append(artistURL);
+
 
 });
 }
