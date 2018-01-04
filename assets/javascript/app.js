@@ -1,39 +1,89 @@
-<<<<<<< HEAD
+
 // Eric Goldstein, Karen Gertenbach, Maria Kuznetsova, Jeffrey Phelps - 
 // DU Web Dev Bootcamp 2017/2018 - Week-8 Homework - Project 1
-$(document).ready(function() {
+// $(document).ready(function() {
 
   //add div for map
   //get bands in town artist info
   //get events locations
   //populate map with markers
 
-	 $("#addTopic").on('click', function(event){
-	 	event.preventDefault();
-	 	var artistName = $("#userSearch").val();
+	//  $("#addTopic").on('click', function(event){
+	//  	event.preventDefault();
+	//  	var artistName = $("#userSearch").val();
 
-	 	var queryURL = "https://rest.bandsintown.com/artists/" + artistName + "/events?app_id=codingbootcamp";
-	 	$.ajax({
-	 	url: queryURL,
-	 	method: "GET"
-	 	}).done(function(response){
-	 		console.log(response);
-	 	})
-	 })
+	//  	var queryURL = "https://rest.bandsintown.com/artists/" + artistName + "/events?app_id=codingbootcamp";
+	//  	$.ajax({
+	//  	url: queryURL,
+	//  	method: "GET"
+	//  	}).done(function(response){
+	//  		console.log(response);
+	//  	})
+	//  })
 
- }); //doc ready closing
+ // }); //doc ready closing
     
     
 
-=======
 // Eric Goldstein, Karen Gertenbach, Maria Kuznetsova, Jeffrey Phelps - 
 // DU Web Dev Bootcamp 2017/2018 - Week-8 Homework - Project 1
 
 
 // ******************************************************************* //
 
-// Google/Youtube video finder AJAX - API
 
+var locations = [
+          {
+          coordinates:{lat: 39.7559, lng: -104.9942},
+          content: "Coors Field"
+          },
+
+          {
+          coordinates:{lat: 39.6654, lng: -105.2057},
+          content: "Red Rocks Amphitheater"
+          }
+      ];
+
+      function initMap(){
+
+        // Map Options
+        var mapOptions = {
+          zoom: 10,
+          center: {lat: 39.7392, lng: -104.9903}
+        }
+
+        //New map
+        var map = new google.maps.Map(document.getElementById('dataDrop4'), mapOptions);
+
+
+        //Function to add markers that takes object as a property
+        function addMarker(properties){
+
+           var marker = new google.maps.Marker({
+            position: properties.coordinates,
+            map: map
+            });
+
+            if(properties.content) {
+                var infoWindow = new google.maps.InfoWindow({
+                content: properties.content
+                });
+            }
+
+            // on click it will show the info for this marker
+            marker.addListener('click', function(){
+            infoWindow.open(map, marker);
+            });
+        }
+
+        //passing the properties of marker
+
+        for (var index = 0; index < locations.length; index++) {
+          addMarker(locations[index]);
+        }
+
+      }
+// Google/Youtube video finder AJAX - API
 var gapikey = 'AIzaSyCKMpw2nmPnon_gkh4EIXnbiAmrZNw-v4M';
 
 $(function() {
@@ -218,11 +268,6 @@ function getButtons(prevPageToken, nextPageToken) {
 };
 
 
-// ******************************************************************* //
-
-
-// ******************************************************************* //
-
 // Bands In Town AJAX - API
 
 function searchBandsInTown(artist) {
@@ -264,7 +309,6 @@ $("#search-btn").on("click", function(event) {
     searchBandsInTown(inputArtist);
 });
 
-// ******************************************************************* //
 
 
->>>>>>> master
+
