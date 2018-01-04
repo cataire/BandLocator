@@ -11,7 +11,7 @@ $(document).ready(function() {
 	 	event.preventDefault();
 	 	var artistName = $("#userSearch").val();
 
-	 	var queryURL = "https://rest.bandsintown.com/artists/" + artistName + "?app_id=codingbootcamp";
+	 	var queryURL = "https://rest.bandsintown.com/artists/" + artistName + "/events?app_id=codingbootcamp";
 	 	$.ajax({
 	 	url: queryURL,
 	 	method: "GET"
