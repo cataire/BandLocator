@@ -18,8 +18,7 @@
       
       <!-- Remote Bootstrap CSS Library -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
       <!-- Local CSS Stylesheet -->
       <link rel="stylesheet" href="assets/style/style.css">
 
@@ -34,75 +33,43 @@
         Permanent+Marker|Sedgwick+Ave+Display|Acme|Rokkitt|Londrina+Sketch|Ranga|Sirin+Stencil|Varela" rel="stylesheet">
 
     </head>
-    <body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+    <body>
 
         <!-- Main Container -->
         <div class ="container-fluid">
 
             <!-- Header -->
             <div class ="jumbotron">
-                <!-- NavBar Sections -->
-                            <nav class="navbar navbar-inverse navbar-fixed-top">
-                              <div class="container-fluid">
-                                <div class="navbar-header">
-                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                                      <span class="icon-bar"></span>
-                                      <span class="icon-bar"></span>
-                                      <span class="icon-bar"></span>                        
-                                  </button>
-                                  <a class="navbar-brand" href="index.html">Homepage</a>
-                                </div>
-                                <div>
-                                  <div class="collapse navbar-collapse" id="myNavbar">
-                                    <ul class="nav navbar-nav">
-                                      <li><a href="#section1">Artist Search</a></li>
-                                      <li><a href="#section2">Artist Bio</a></li>
-                                      <li><a href="#section3">Artist Discography</a></li>
-                                      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Google Maps <span class="caret"></span></a>
-                                        <ul class="dropdown-menu">
-                                          <li><a href="#section41">Search for Directions</a></li>
-                                          <li><a href="#section42">Map Results</a></li>
-                                        </ul>
-                                      </li>
-                                    </ul>
-                                  </div>
-                                </div>
-                              </div>
-                            </nav>
-            <!--Title of App  -->
                 <div class="text-center title">Code Rocks!</div> <br>
                 <div class="text-center subTitle">- Super Band Locator -</div>
             </div>
 
             <!-- Body -->
-            <div class="row">
-
-                <!-- Left Column Spacer -->
-                <div class="col-sm-0 col-md-0 col-lg-1"></div>
+            <div class="row" id="topRow">
 
                 <!-- Left Column -->
-                <div class="col-sm-12 col-md-6 col-lg-5">
+                <div class="col-sm-12 col-md-6 col-lg-6">
 
                     <!-- Body Panel Left -->
                     <div class="panel panelOne">
 
                         <div class="panel-heading">
-                            <h3 class="panel-title"><strong><div id="artistName"></div> </strong></h3>
+                            <h3 class="panel-title"><strong>Artist Search</strong></h3>
                         </div>
 
-                        <div class="panel-body">
-                <form>
-                    <div id="section1"></div>
-                    <div class="form-group">
-                    <label for="userSearch">Artist:</label>
-                        <input type="text" id="artist-input"name= "artist" placeholder="Type search here"required="required">
-                        <input id="select-artist" type="submit" value="Search">
-                    <button onclick="clearArray();">Clear</button>
-                    </div>
-                </form>
-                            <div id="section2"></div>
-                            <div id="artistImage"></div> 
-                   
+                        <div class="panel-body panelBodyOne">
+                            <section>
+                                <form id="search-form" name="search-form" onsubmit="return search()">
+                                    <div class="fieldcontainer">
+                                        <input type="search" id="query" class="search-field" placeholder="Search Band-Finder">
+                                        <input type="submit" name="search-btn" id="search-btn" value="Search">
+                                    </div>
+                                </form>
+                            </section>
+                            <br>
+                            <div id="dataDrop1">Data Drop 1</div>
+                            <div id="dataDrop2">Data Drop 2</div>
                         </div>
 
                     </div>
@@ -110,26 +77,48 @@
                 </div>
 
                 <!-- Right Column -->
-                <div class="col-sm-12 col-md-6 col-lg-5">
+                <div class="col-sm-12 col-md-6 col-lg-6">
                     
                     <!-- Body Panel Right -->
                     <div class="panel panelTwo">
 
                         <div class="panel-heading">
-                            <h3 class="panel-title"><strong>Side B</strong></h3>
+                            <h3 class="panel-title"><strong>Event Locator</strong></h3>
                         </div>
 
                         <div class="panel-body">
-                                <div id="section3"></div>
-                                <div id="artist-div"></div>    
+                            <div id="dataDrop4">
+                                
                             </div>
+                        </div>
 
                     </div>
 
                 </div>
-                
-            </div>
 
+                <!-- Bottom Column -->
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    
+                    <!-- Body Panel Right -->
+                    <div class="panel panelThree">
+
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><strong>Videos</strong></h3>
+                        </div>
+
+                        <div class="panel-body">
+                            <div id="dataDrop3">
+                                <ul id="results"></ul>
+                                <div id="buttons"></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+                
         </div>
 
         <!-- Footer -->
@@ -140,67 +129,16 @@
             </div>
 
         </div>
-        <script>
-        // <!-- // Array to push locations in -->
-        var locations = [
-            {
-            coordinates:{lat: 39.7559, lng: -104.9942},
-            content: "Coors Field"
-            },
-            {
-            coordinates:{lat: 39.6654, lng: -105.2057},
-            content: "Red Rocks Amphitheater"
-            }
-        ];
-        function initMap(){
-          // Map Options
-          var mapOptions = {
-            zoom: 10,
-            center: {lat: 39.7392, lng: -104.9903}
-          }
-        //   <!-- //New map -->
-          var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-        //   <!-- //Function to add markers that takes object as a property -->
-          function addMarker(properties){
-             var marker = new google.maps.Marker({
-              position: properties.coordinates,
-              map: map
-              });
-              if(properties.content) {
-                  var infoWindow = new google.maps.InfoWindow({
-                  content: properties.content
-                  });
-              }
-              <!-- // on click it will show the info for this marker -->
-              marker.addListener('click', function(){
-              infoWindow.open(map, marker);
-              });
-          }
-        //   <!-- //passing the properties of marker -->
-          for (var index = 0; index < locations.length; index++) {
-            addMarker(locations[index]);
-          }
-        }
-      </script>
-          
-  
-  
-          <!-- Remote jQuery Library -->
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  
-          <!-- Remote Firebase API -->
-          <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
-  
-          <!-- Local JavaScript File -->
-          <script src="assets/javascript/app.js"></script>
-  
-           <!-- Google Maps API script -->
-          <script async defer
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmYHEQwXA3bucxiXU2-23Dx-PnAOAO6NA&callback=initMap">
-          </script>
-  
-      </body>
-  
-  </html>
 
+        <!-- Remote jQuery Library -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+        <!-- Remote Firebase API -->
+        <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+
+        <!-- Local JavaScript File -->
+        <script src="assets/javascript/app.js"></script>
+
+    </body>
+
+</html>
