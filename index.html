@@ -1,4 +1,6 @@
-<!-- Jeffrey Phelps - DU Web Dev Bootcamp 2017/2018 - Week-8 Homework - Project 1 -->
+
+<!-- Eric Goldstein, Karen Gertenbach, Maria Kuznetsova, Jeffrey Phelps - 
+    DU Web Dev Bootcamp 2017/2018 - Week-8 Homework - Project 1 -->
 
 <!DOCTYPE html>
 
@@ -10,9 +12,10 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
     
-      <title>Code Rocks!</title>
+      <title>Code Rocks! Super Band Finder</title>
       
-      <!-- <link rel="stylesheet" href="normalize.css" type="text/css" /> -->
+      <!-- Local CSS Normalizer File -->
+      <link rel="stylesheet" href="assets/style/normalize.css" type="text/css" />
       
       <!-- Remote Bootstrap CSS Library -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -30,6 +33,8 @@
       <link href="https://fonts.googleapis.com/css?family=Ceviche+One|Chewy|Freckle+Face|Indie+Flower|
         Permanent+Marker|Sedgwick+Ave+Display|Acme|Rokkitt|Londrina+Sketch|Ranga|Sirin+Stencil|Varela" rel="stylesheet">
 
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     </head>
 
     <body>
@@ -44,69 +49,89 @@
             </div>
 
             <!-- Body -->
-            <div class="row">
+            <div class="row" id="topRow">
 
-                <div class="col-lg-1"></div>
-
-                <div class="col-lg-5">
+                <!-- Left Column -->
+                <div class="col-sm-12 col-md-6 col-lg-6">
 
                     <!-- Body Panel Left -->
                     <div class="panel panelOne">
 
                         <div class="panel-heading">
-                            <h3 class="panel-title"><strong>Side A</strong></h3>
+                            <h3 class="panel-title"><strong>Artist Search</strong></h3>
                         </div>
 
-                        <div class="panel-body">
-                            <form>
-                                Artist:<br>
-                                <input id="artist-input" type="text" name="artist" value"artist"> 
-                                <input id="select-artist" type="submit" value="Submit">
-                            </form>
-                            <!-- <h1>Sample Text</h1>
-                            <h2>Sample Text</h2>
-                            <h3>Sample Text</h3>
-                            <h4>Sample Text</h4> -->
-                            <div id="artist-div"></div>
+                        <div class="panel-body panelBodyOne">
+                            <section>
+                                <form id="search-form" name="search-form" onsubmit="return search()">
+                                    <div class="fieldcontainer">
+                                        <input type="search" id="query" class="search-field" placeholder="Search Band-Finder">
+                                        <input type="submit" name="search-btn" id="search-btn" value="Search">
+                                    </div>
+                                </form>
+                            </section>
+                            <br>
+                            <div id="dataDrop1">Data Drop 1</div>
+                            <div id="dataDrop2">Data Drop 2</div>
                         </div>
 
                     </div>
 
                 </div>
 
-                <div class="col-lg-5">
+                <!-- Right Column -->
+                <div class="col-sm-12 col-md-6 col-lg-6">
                     
                     <!-- Body Panel Right -->
                     <div class="panel panelTwo">
 
                         <div class="panel-heading">
-                            <h3 class="panel-title"><strong>Side B</strong></h3>
+                            <h3 class="panel-title"><strong>Event Locator</strong></h3>
                         </div>
 
                         <div class="panel-body">
-                            <h1>Sample Text</h1>
-                            <h2>Sample Text</h2>
-                            <h3>Sample Text</h3>
-                            <h4>Sample Text</h4>
+                            <div id="dataDrop4">
+                                
+                            </div>
                         </div>
 
                     </div>
 
                 </div>
-                
-            </div>
 
+                <!-- Bottom Column -->
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    
+                    <!-- Body Panel Right -->
+                    <div class="panel panelThree">
+
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><strong>Videos</strong></h3>
+                        </div>
+
+                        <div class="panel-body">
+                            <div id="dataDrop3">
+                                <ul id="results"></ul>
+                                <div id="buttons"></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+                
         </div>
 
-        <!-- Begin Footer -->
-        <div id="footerBox">
+        <!-- Footer -->
+        <div id="footer">
                 
-            <div id="footer">
+            <div id="footerText">
                 <p>© Copyright Code Rocks! DU Web Dev Bootcamp 2017/2018</p>
             </div>
 
         </div>
-        <!-- End Footer -->
 
         <!-- Remote jQuery Library -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -118,5 +143,6 @@
         <script src="assets/javascript/app.js"></script>
 
     </body>
+
 
 </html>

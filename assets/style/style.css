@@ -1,7 +1,7 @@
-/* Jeffrey Phelps - DU Web Dev Bootcamp 2017/2018 - Week-8 Homework - Project 1
+/* Eric Goldstein, Karen Gertenbach, Maria Kuznetsova, Jeffrey Phelps - 
+    DU Web Dev Bootcamp 2017/2018 - Week-8 Homework - Project 1
 
-Font Families Available:
-
+Fonts Available:
     font-family: 'Indie Flower', sans-serif;
     font-family: 'Permanent Marker', sans-serif;
     font-family: 'Chewy', sans-serif;
@@ -18,6 +18,7 @@ Font Families Available:
 
 
 body {
+    min-width: 320px;
     background-color: rgba(0, 0, 0, 0.7);
     background-image: url("../images/bkgrnd3.jpg");
     background-repeat: repeat;
@@ -25,17 +26,23 @@ body {
     font-family: 'Sirin Stencil', sans-serif;
 }
 
+
+/* Header */
+
 .jumbotron {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.75);
     margin-top: 20px;
     text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .title {
+    margin-top: -30px;
     font-family: 'Sedgwick Ave Display', sans-serif;
-    color: rgba(255, 215, 0, 0.8);
+    color: rgba(255, 215, 0, 1);
     font-size: 80px;
     font-weight: bolder;
+    -webkit-text-stroke: 2px rgba(0, 0, 0, 0.7);
     text-shadow: 
         0 1px 0 #ccc,
         0 2px 0 #c9c9c9,
@@ -49,35 +56,45 @@ body {
         0 5px 10px rgba(0,0,0,.25),
         0 10px 10px rgba(0,0,0,.2),
         0 20px 20px rgba(0, 0, 0, 0.801);
-
-    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), color-stop(50%, rgba(255,255,255,.8)), to(rgba(0,0,0,1)));
 }
-
-
-/* ************** */
-/* Animated Title */
-
-
-
-/* ************** */
-/* End Animated Title */
-
-
-
 
 .subTitle {
     font-family: 'Indie Flower', sans-serif;
     font-size: 33px;
     font-weight: bolder;
-    margin-top: -30px;
+    margin-top: -40px;
+    margin-bottom: -30px;
 }
 
+
+/* Body */
+
 .panel {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.75);
     height: 500px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    overflow: auto;
+}
+
+#dataDrop1, #dataDrop2 {
+    float: left;
+    text-align: center;
+}
+
+#dataDrop1 {
+    width: 70%;
+    margin-top: -10px;
+}
+
+#dataDrop2 {
+    width: 30%;
 }
 
 .panelTwo {
+    
+}
+
+.panelThree {
     margin-bottom: 80px;
 }
 
@@ -95,7 +112,7 @@ body {
 
 form {
     font-family: sans-serif;
-    font-size: 15px;
+    font-size: 12px;
 }
 
 input {
@@ -103,11 +120,64 @@ input {
     margin-top: 3px;
 }
 
+/* Google/YouTube API Drop */
 
-/* BEGIN FOOTER */
+.fieldcontainer {
+    display: block;
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+}
 
-#footerBox {
-    margin-top: 30px;
+#results li {
+    padding: 10px 0;
+    border-bottom: 1px dotted #ccc;
+    list-style: none;
+    overflow: auto;
+}
+.list-left {
+    float: left;
+    width: 20%;
+}
+.list-left img {
+    width: 100%;
+    padding: 3px;
+    border: 1px solid #ccc;
+}
+.list-right {
+    float: right;
+    width: 78%;
+}
+.list-right h3 {
+    margin: 0;
+}
+.list-right p {
+    margin: 0;
+}
+
+.cTitle {
+    color: #dd2826;
+}
+
+.button-container {
+    margin-top: 25px;
+    
+}
+
+.paging-button {
+    background: #f4f4f4;
+    padding: 0 13px;
+    border: #ccc 1px solid;
+    border-radius: 5px;
+    color: #333;
+    margin: 10px;
+    cursor: pointer;
+}
+
+
+/* Footer */
+
+#footer {
     height: 50px;
     width: 100%;
     position: fixed;
@@ -116,25 +186,83 @@ input {
     background-color: rgba(0, 0, 0, 0.7);
     color: rgba(255, 215, 0, 0.7);
     text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-#footer p {
+#footerText p {
     font-family: 'Indie Flower', cursive;
     font-size: 16px;
     font-weight: bold;
     padding: 16px;
 }
 
-/* END FOOTER */
 
 /* ************************* */
 
-/* BEGIN RESPONSIVE CHANGES */
 
-@media screen and (max-width:808px) {
+/* Responsive Changes */
 
+@media screen and (max-width:991px) {
+
+    .subTitle {
+        margin-bottom: -30px;
+    }
+
+    .panelTwo {
+
+    }
+
+    .panelThree {
+        margin-bottom: 20px;
+    }
     
+    #footer {
+        position: relative;
+        width: 96%;
+        margin-left: 15px;
+    }
 
 }
 
-/* END RESPONSIVE CHANGES */
+@media screen and (max-width:767px) {
+
+    .title {
+        margin-top: -20px;
+    }
+
+    .subTitle {
+        margin-bottom: -10px;
+    }
+
+    #footer {
+        width: 95%;
+    }
+
+}
+
+@media screen and (max-width:475px) {
+
+    .title {
+        margin-top: -20px;
+        font-size: 50px;
+    }
+
+    .subTitle {
+        font-size: 20px;
+        margin-top: -30px;
+        margin-bottom: -20px;
+    }
+
+    .panel {
+        font-size: 1.1em;
+    }
+
+    #footer {
+        width: 93%;
+    }
+
+    #footerText p {
+        font-size: 10px;
+    }
+
+}
