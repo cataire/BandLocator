@@ -242,11 +242,12 @@ $.ajax({
 }).done(function(response) {
     console.log(response);
 
-    var eventData;
+    var eventInfo;
     var venueName;
     var eventDate;
     var venueCity;
     var mapLink;
+    var eventDateFormat;
     
 
     for (var index = 0; index < response.length; index++) {
@@ -256,14 +257,15 @@ $.ajax({
     venueCity = response[index].venue.city;
     venueLatitude = parseFloat(response[index].venue.latitude);
     venueLongitude = parseFloat(response[index].venue.longitude);
+    eventDateFormat = moment(eventDate).format("MMMM DD YYYY HH:MM");
 
 
-    eventData = (venueCity + " " 
-        + eventDate + " " + venueName + "<br>" );
+    eventInfo = (venueCity + " " 
+        + eventDateFormat + " " + venueName + "<br>" );
 
 
 
-    $("#events").append(eventData);
+    $("#events").append(eventInfo);
 
     mapLink = $("<a>").attr("href", 
         "https://www.google.com/maps/search/?api=1&query=" + venueLatitude + "," + venueLongitude).text("See it on a map");
