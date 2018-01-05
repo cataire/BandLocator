@@ -1,89 +1,14 @@
-
-// Eric Goldstein, Karen Gertenbach, Maria Kuznetsova, Jeffrey Phelps - 
-// DU Web Dev Bootcamp 2017/2018 - Week-8 Homework - Project 1
-// $(document).ready(function() {
-
-  //add div for map
-  //get bands in town artist info
-  //get events locations
-  //populate map with markers
-
-	//  $("#addTopic").on('click', function(event){
-	//  	event.preventDefault();
-	//  	var artistName = $("#userSearch").val();
-
-	//  	var queryURL = "https://rest.bandsintown.com/artists/" + artistName + "/events?app_id=codingbootcamp";
-	//  	$.ajax({
-	//  	url: queryURL,
-	//  	method: "GET"
-	//  	}).done(function(response){
-	//  		console.log(response);
-	//  	})
-	//  })
-
- // }); //doc ready closing
-    
-    
-
 // Eric Goldstein, Karen Gertenbach, Maria Kuznetsova, Jeffrey Phelps - 
 // DU Web Dev Bootcamp 2017/2018 - Week-8 Homework - Project 1
 
 
 // ******************************************************************* //
 
+var venueLatitude;
+var venueLongitude;
 
-var locations = [
-          {
-          coordinates:{lat: 39.7559, lng: -104.9942},
-          content: "Coors Field"
-          },
-
-          {
-          coordinates:{lat: 39.6654, lng: -105.2057},
-          content: "Red Rocks Amphitheater"
-          }
-      ];
-
-      function initMap(){
-
-        // Map Options
-        var mapOptions = {
-          zoom: 10,
-          center: {lat: 39.7392, lng: -104.9903}
-        }
-
-        //New map
-        var map = new google.maps.Map(document.getElementById('dataDrop4'), mapOptions);
-
-
-        //Function to add markers that takes object as a property
-        function addMarker(properties){
-
-           var marker = new google.maps.Marker({
-            position: properties.coordinates,
-            map: map
-            });
-
-            if(properties.content) {
-                var infoWindow = new google.maps.InfoWindow({
-                content: properties.content
-                });
-            }
-
-            // on click it will show the info for this marker
-            marker.addListener('click', function(){
-            infoWindow.open(map, marker);
-            });
-        }
-
-        //passing the properties of marker
-
-        for (var index = 0; index < locations.length; index++) {
-          addMarker(locations[index]);
-        }
-
-      }
 // Google/Youtube video finder AJAX - API
+
 var gapikey = 'AIzaSyCKMpw2nmPnon_gkh4EIXnbiAmrZNw-v4M';
 
 $(function() {
@@ -268,6 +193,11 @@ function getButtons(prevPageToken, nextPageToken) {
 };
 
 
+// ******************************************************************* //
+
+
+// ******************************************************************* //
+
 // Bands In Town AJAX - API
 
 function searchBandsInTown(artist) {
@@ -299,6 +229,75 @@ var queryURL = "https://rest.bandsintown.com/artists/" + artist + "?app_id=codin
     });
 };
 
+// Function to get event location info
+
+function searchEvent(artist) {
+
+var queryURL = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
+
+$.ajax({
+    url: queryURL,
+    method: "GET"
+
+}).done(function(response) {
+    console.log(response);
+
+    var eventData;
+    var venueName;
+    var eventDate;
+    var venueCity;
+    var mapLink;
+    
+
+    for (var index = 0; index < response.length; index++) {
+    
+    venueName = response[index].venue.name;
+    eventDate = response[index].datetime;
+    venueCity = response[index].venue.city;
+    venueLatitude = parseFloat(response[index].venue.latitude);
+    venueLongitude = parseFloat(response[index].venue.longitude);
+
+
+    eventData = (venueCity + " " 
+        + eventDate + " " + venueName + "<br>" );
+
+
+
+    $("#events").append(eventData);
+
+    mapLink = $("<a>").attr("href", 
+        "https://www.google.com/maps/search/?api=1&query=" + venueLatitude + "," + venueLongitude).text("See it on a map");
+    mapLink.attr("target", "_blank");
+    $("#events").append(mapLink);
+
+    var br = $("<br>");
+    $("#events").append(br);
+
+
+    // mapDiv = $("<div>");
+    // mapDiv.addClass("map");
+    // $("#events").append(mapDiv);
+    
+    };
+
+    });
+
+};
+
+
+      // function initMap(){ 
+
+      //   // Map Options
+      //   var mapOptions = {
+      //     zoom: 10,
+      //     center: {lat: 39.7392, lng: -104.9903}
+      //   }
+
+      //   //New map
+      //   var map = new google.maps.Map($('.map'), mapOptions);
+
+      // }
+
 // Event handler for user clicking the select-artist button
 $("#search-btn").on("click", function(event) {
     
@@ -307,8 +306,11 @@ $("#search-btn").on("click", function(event) {
 
     // Running the searchBandsInTown function (passing in the artist as an argument)
     searchBandsInTown(inputArtist);
+    searchEvent(inputArtist);
 });
 
 
+
+// ******************************************************************* //
 
 
