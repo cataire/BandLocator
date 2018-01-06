@@ -280,6 +280,7 @@ $.ajax({
     // mapDiv.addClass("map");
     // $("#events").append(mapDiv);
     
+    // initMap();
     };
 
     });
@@ -292,7 +293,8 @@ $.ajax({
       //   // Map Options
       //   var mapOptions = {
       //     zoom: 10,
-      //     center: {lat: 39.7392, lng: -104.9903}
+      //     center: {lat: 39.7392, lng: -104.9903},
+      //     mapTypeId: 'satellite'
       //   }
 
       //   //New map
