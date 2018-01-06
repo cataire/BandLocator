@@ -267,11 +267,6 @@ $.ajax({
 
     $("#events").append(eventInfo);
 
-    mapLink = $("<a>").attr("href", 
-        "https://www.google.com/maps/search/?api=1&query=" + venueLatitude + "," + venueLongitude).text("See it on a map");
-    mapLink.attr("target", "_blank");
-    $("#events").append(mapLink);
-
     var br = $("<br>");
     $("#events").append(br);
 
@@ -280,17 +275,10 @@ $.ajax({
     mapBtn.attr('data-lat', venueLatitude);
     mapBtn.attr('data-long', venueLongitude);
     $("#events").append(mapBtn);
-
-
-
-
-
-    // mapDiv = $("<div>");
-    // mapDiv.addClass("map");
-    // $("#events").append(mapDiv);
-    
+    $("#events").append(br);
     
     };
+
     $(".map-btn").on("click", function(){
         console.log(this);
     const lat = $(this).attr('data-lat')
@@ -305,19 +293,8 @@ $.ajax({
 };
 
 
-      //  var locations = [
-      //     {
-      //     coordinates:{lat: 39.7559, lng: -104.9942},
-      //     content: "Coors Field"
-      //     },
 
-      //     {
-      //     coordinates:{lat: 39.6654, lng: -105.2057},
-      //     content: "Red Rocks Amphitheater"
-      //     }
-      // ];
-
-      function initMap(latitude = 51.5074, longitude = -0.1278){
+      function initMap(latitude = 39.7392, longitude = -104.9903){
         console.log(latitude, longitude, 'here is what we are passing');
         // Map Options
         var mapOptions = {
@@ -327,35 +304,7 @@ $.ajax({
 
         //New map
         var map = new google.maps.Map(document.getElementById('maps'), mapOptions);
-
-
-        //Function to add markers that takes object as a property
-        // function addMarker(properties){
-
-        //    var marker = new google.maps.Marker({
-        //     position: properties.coordinates,
-        //     map: map
-        //     });
-
-        //     if(properties.content) {
-        //         var infoWindow = new google.maps.InfoWindow({
-        //         content: properties.content
-        //         });
-        //     }
-
-        //     // on click it will show the info for this marker
-        //     marker.addListener('click', function(){
-        //     infoWindow.open(map, marker);
-        //     });
-        // }
-
-        //passing the properties of marker
-
-        // for (var index = 0; index < locations.length; index++) {
-        //   addMarker(locations[index]);
-        // }
         
-      
 
       }
 
