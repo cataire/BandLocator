@@ -242,15 +242,18 @@ var queryURL = "https://rest.bandsintown.com/artists/" + artist + "?app_id=codin
       searchBandsInTown(inputArtist);
   });
   
- // Calling an initial band on page load
- 
- var initialArtist = "Metallica";
- 
- $(document).ready(function() {
- 
-     searchBandsInTown(initialArtist);
- 
- });
+// Calling an initial band on page load
+
+var initialArtists = ["Metallica", "A7X", "U2", "Offspring", "Bruno Mars"];
+var initialArtist = initialArtists[Math.floor(Math.random() * initialArtists.length)];
+
+$(document).ready(function() {
+
+    searchBandsInTown(initialArtist);
+
+});
+
+
 // ******************************************************************* //
  
 
