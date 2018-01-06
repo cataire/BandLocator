@@ -202,6 +202,14 @@ input {
     height: 50px;
 }
 
+#maps {
+    height: 200px;
+    width: 100%;
+}
+
+.map-btn {
+    color: black;
+}
 
 /* ************************* */
 

@@ -2,7 +2,8 @@
 // DU Web Dev Bootcamp 2017/2018 - Week-8 Homework - Project 1
 
 
-// ****************************************************************
+// ******************************************************************* //
+
 var venueLatitude;
 var venueLongitude;
 
@@ -214,16 +215,12 @@ var queryURL = "https://rest.bandsintown.com/artists/" + artist + "?app_id=codin
 
         // Constructing HTML containing the artist information
         var artistName = $("<h1>").text(response.name);
-
-        var artistURL = $("<a>").attr("href", response.url).append(artistName).attr("target", "_blank");
+        var artistURL = $("<a>").attr("href", response.url).append(artistName);
         var artistImage = $("<img>").attr("src", response.thumb_url);
         var trackerCount = $("<h3>").text(response.tracker_count + " fans tracking this artist");
         var upcomingEvents = $("<h3>").text(response.upcoming_event_count + " upcoming events");
-        var goToArtist = $("<a>").attr("href", response.url).attr("target", "_blank");
-        // goToArtist.append(`<i class="far fa-calendar-alt"></i>`);
-        var facebookPage = $("<a>").attr("href", response.facebook_page_url).attr("target", "_blank");
-        facebookPage.append(`<i class="fa fa-facebook-official" style="font-size:100px"></i>`);
-        var facebookText = $("<h4>").text(" Facebook Page ");
+        var goToArtist = $("<a>").attr("href", response.url).text("See Tour Dates");
+
         // Empty the contents of the artist-div, append the new artist content
         $("#dataDrop1").empty();
         $("#dataDrop2").empty();
@@ -278,42 +275,89 @@ $.ajax({
     var br = $("<br>");
     $("#events").append(br);
 
+    var mapBtn = $("<button>").text("See it on a map");
+    mapBtn.addClass("map-btn");
+    mapBtn.attr('data-lat', venueLatitude);
+    mapBtn.attr('data-long', venueLongitude);
+    $("#events").append(mapBtn);
+
+
+
+
 
     // mapDiv = $("<div>");
     // mapDiv.addClass("map");
     // $("#events").append(mapDiv);
     
-    // initMap();
+    
     };
+    $(".map-btn").on("click", function(){
+        console.log(this);
+    const lat = $(this).attr('data-lat')
+    const long = $(this).attr('data-long');
+    console.log('Clicked', lat, long);
 
+    initMap(+lat, +long);
+
+}); 
     });
 
 };
 
 
-      // function initMap(){ 
+      //  var locations = [
+      //     {
+      //     coordinates:{lat: 39.7559, lng: -104.9942},
+      //     content: "Coors Field"
+      //     },
 
-      //   // Map Options
-      //   var mapOptions = {
-      //     zoom: 10,
-      //     center: {lat: 39.7392, lng: -104.9903},
-      //     mapTypeId: 'satellite'
-      //   }
+      //     {
+      //     coordinates:{lat: 39.6654, lng: -105.2057},
+      //     content: "Red Rocks Amphitheater"
+      //     }
+      // ];
 
-      //   //New map
-      //   var map = new google.maps.Map($('.map'), mapOptions);
-
-      // }
-
-=======
-        $("#dataDrop2").append(facebookText);
-        if(response.facebook_page_url != "")
-        {
-        	$("#dataDrop2").append(facebookPage);
+      function initMap(latitude = 51.5074, longitude = -0.1278){
+        console.log(latitude, longitude, 'here is what we are passing');
+        // Map Options
+        var mapOptions = {
+          zoom: 10,
+          center: {lat: latitude, lng: longitude}
         }
-        $("#dataDrop2").append(goToArtist);
-    });
-};
+
+        //New map
+        var map = new google.maps.Map(document.getElementById('maps'), mapOptions);
+
+
+        //Function to add markers that takes object as a property
+        // function addMarker(properties){
+
+        //    var marker = new google.maps.Marker({
+        //     position: properties.coordinates,
+        //     map: map
+        //     });
+
+        //     if(properties.content) {
+        //         var infoWindow = new google.maps.InfoWindow({
+        //         content: properties.content
+        //         });
+        //     }
+
+        //     // on click it will show the info for this marker
+        //     marker.addListener('click', function(){
+        //     infoWindow.open(map, marker);
+        //     });
+        // }
+
+        //passing the properties of marker
+
+        // for (var index = 0; index < locations.length; index++) {
+        //   addMarker(locations[index]);
+        // }
+        
+      
+
+      }
 
 // Event handler for user clicking the select-artist button
 $("#search-btn").on("click", function(event) {
@@ -331,7 +375,3 @@ $("#search-btn").on("click", function(event) {
 // ******************************************************************* //
 
 
-=======
-});
-
-// ******************************************************************* //
