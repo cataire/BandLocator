@@ -15,23 +15,18 @@
 
     // Retrieve user inputs from form
     var query = $('#query').val().trim();
-    var result = $('#result').val().trim();
  
     // Create an object for new train to be added
     var newArtist = {
       userSearched: query,
-      locationsClicked: result
+  
     }
   
     
     database.ref().push(newArtist);
   
     $('#query').val('');
-    $('#result').val('');
-    
-  
-  
-  
+
     return false;
   
   });
@@ -40,7 +35,7 @@
   database.ref().on('child_added', function(childSnapshot, prevChildKey) {
   
     var query = childSnapshot.val().query;
-    var result = childSnapshot.val().result;
+  
   
 
   });
