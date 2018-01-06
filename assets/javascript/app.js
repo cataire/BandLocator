@@ -2,9 +2,7 @@
 // DU Web Dev Bootcamp 2017/2018 - Week-8 Homework - Project 1
 
 
-// ****************************************************************
-var venueLatitude;
-var venueLongitude;
+// ******************************************************************* //
 
 // Google/Youtube video finder AJAX - API
 
@@ -214,104 +212,17 @@ var queryURL = "https://rest.bandsintown.com/artists/" + artist + "?app_id=codin
 
         // Constructing HTML containing the artist information
         var artistName = $("<h1>").text(response.name);
-
-        var artistURL = $("<a>").attr("href", response.url).append(artistName).attr("target", "_blank");
+        var artistURL = $("<a>").attr("href", response.url).append(artistName);
         var artistImage = $("<img>").attr("src", response.thumb_url);
         var trackerCount = $("<h3>").text(response.tracker_count + " fans tracking this artist");
         var upcomingEvents = $("<h3>").text(response.upcoming_event_count + " upcoming events");
-        var goToArtist = $("<a>").attr("href", response.url).attr("target", "_blank");
-        // goToArtist.append(`<i class="far fa-calendar-alt"></i>`);
-        var facebookPage = $("<a>").attr("href", response.facebook_page_url).attr("target", "_blank");
-        facebookPage.append(`<i class="fa fa-facebook-official" style="font-size:100px"></i>`);
-        var facebookText = $("<h4>").text(" Facebook Page ");
+        var goToArtist = $("<a>").attr("href", response.url).text("See Tour Dates");
+
         // Empty the contents of the artist-div, append the new artist content
         $("#dataDrop1").empty();
         $("#dataDrop2").empty();
         $("#dataDrop1").append(artistURL, artistImage);
         $("#dataDrop2").append(upcomingEvents, goToArtist);
-    });
-};
-
-// Function to get event location info
-
-function searchEvent(artist) {
-
-var queryURL = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
-
-$.ajax({
-    url: queryURL,
-    method: "GET"
-
-}).done(function(response) {
-    console.log(response);
-
-    var eventInfo;
-    var venueName;
-    var eventDate;
-    var venueCity;
-    var mapLink;
-    var eventDateFormat;
-    
-
-    for (var index = 0; index < response.length; index++) {
-    
-    venueName = response[index].venue.name;
-    eventDate = response[index].datetime;
-    venueCity = response[index].venue.city;
-    venueLatitude = parseFloat(response[index].venue.latitude);
-    venueLongitude = parseFloat(response[index].venue.longitude);
-    eventDateFormat = moment(eventDate).format("MMMM DD YYYY HH:MM");
-
-
-    eventInfo = (venueCity + " " 
-        + eventDateFormat + " " + venueName + "<br>" );
-
-
-
-    $("#events").append(eventInfo);
-
-    mapLink = $("<a>").attr("href", 
-        "https://www.google.com/maps/search/?api=1&query=" + venueLatitude + "," + venueLongitude).text("See it on a map");
-    mapLink.attr("target", "_blank");
-    $("#events").append(mapLink);
-
-    var br = $("<br>");
-    $("#events").append(br);
-
-
-    // mapDiv = $("<div>");
-    // mapDiv.addClass("map");
-    // $("#events").append(mapDiv);
-    
-    // initMap();
-    };
-
-    });
-
-};
-
-
-      // function initMap(){ 
-
-      //   // Map Options
-      //   var mapOptions = {
-      //     zoom: 10,
-      //     center: {lat: 39.7392, lng: -104.9903},
-      //     mapTypeId: 'satellite'
-      //   }
-
-      //   //New map
-      //   var map = new google.maps.Map($('.map'), mapOptions);
-
-      // }
-
-=======
-        $("#dataDrop2").append(facebookText);
-        if(response.facebook_page_url != "")
-        {
-        	$("#dataDrop2").append(facebookPage);
-        }
-        $("#dataDrop2").append(goToArtist);
     });
 };
 
@@ -323,15 +234,18 @@ $("#search-btn").on("click", function(event) {
 
     // Running the searchBandsInTown function (passing in the artist as an argument)
     searchBandsInTown(inputArtist);
-    searchEvent(inputArtist);
 });
 
+// Calling an initial band on page load
 
+var initialArtist = "Metallica";
 
-// ******************************************************************* //
+$(document).ready(function() {
 
+    searchBandsInTown(initialArtist);
 
-=======
 });
 
 // ******************************************************************* //
+ 
+
