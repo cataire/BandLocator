@@ -2,8 +2,7 @@
 // DU Web Dev Bootcamp 2017/2018 - Week-8 Homework - Project 1
 
 
-// ******************************************************************* //
-
+// ****************************************************************
 var venueLatitude;
 var venueLongitude;
 
@@ -215,12 +214,16 @@ var queryURL = "https://rest.bandsintown.com/artists/" + artist + "?app_id=codin
 
         // Constructing HTML containing the artist information
         var artistName = $("<h1>").text(response.name);
-        var artistURL = $("<a>").attr("href", response.url).append(artistName);
+
+        var artistURL = $("<a>").attr("href", response.url).append(artistName).attr("target", "_blank");
         var artistImage = $("<img>").attr("src", response.thumb_url);
         var trackerCount = $("<h3>").text(response.tracker_count + " fans tracking this artist");
         var upcomingEvents = $("<h3>").text(response.upcoming_event_count + " upcoming events");
-        var goToArtist = $("<a>").attr("href", response.url).text("See Tour Dates");
-
+        var goToArtist = $("<a>").attr("href", response.url).attr("target", "_blank");
+        // goToArtist.append(`<i class="far fa-calendar-alt"></i>`);
+        var facebookPage = $("<a>").attr("href", response.facebook_page_url).attr("target", "_blank");
+        facebookPage.append(`<i class="fa fa-facebook-official" style="font-size:100px"></i>`);
+        var facebookText = $("<h4>").text(" Facebook Page ");
         // Empty the contents of the artist-div, append the new artist content
         $("#dataDrop1").empty();
         $("#dataDrop2").empty();
@@ -302,6 +305,16 @@ $.ajax({
 
       // }
 
+=======
+        $("#dataDrop2").append(facebookText);
+        if(response.facebook_page_url != "")
+        {
+        	$("#dataDrop2").append(facebookPage);
+        }
+        $("#dataDrop2").append(goToArtist);
+    });
+};
+
 // Event handler for user clicking the select-artist button
 $("#search-btn").on("click", function(event) {
     
@@ -318,3 +331,7 @@ $("#search-btn").on("click", function(event) {
 // ******************************************************************* //
 
 
+=======
+});
+
+// ******************************************************************* //
