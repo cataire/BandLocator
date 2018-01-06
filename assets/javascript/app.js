@@ -211,45 +211,46 @@ var queryURL = "https://rest.bandsintown.com/artists/" + artist + "?app_id=codin
         console.log(response);
 
        var artistName = $("<h1>").text(response.name);
- -        var artistURL = $("<a>").attr("href", response.url).append(artistName).attr("target", "_blank");
- +        var artistURL = $("<a>").attr("href", response.url).append(artistName);
+         var artistURL = $("<a>").attr("href", response.url).append(artistName).attr("target", "_blank");
+         var artistURL = $("<a>").attr("href", response.url).append(artistName);
           var artistImage = $("<img>").attr("src", response.thumb_url);
           var trackerCount = $("<h3>").text(response.tracker_count + " fans tracking this artist");
           var upcomingEvents = $("<h3>").text(response.upcoming_event_count + " upcoming events");
- -        var goToArtist = $("<a>").attr("href", response.url).attr("target", "_blank");
- -        // goToArtist.append(`<i class="far fa-calendar-alt"></i>`);
- -        var facebookPage = $("<a>").attr("href", response.facebook_page_url).attr("target", "_blank");
- -        facebookPage.append(`<i class="fa fa-facebook-official" style="font-size:100px"></i>`);
- -        var facebookText = $("<h4>").text(" Facebook Page ");
- +        var goToArtist = $("<a>").attr("href", response.url).text("See Tour Dates");
- +
+         var goToArtist = $("<a>").attr("href", response.url).attr("target", "_blank");
+         // goToArtist.append(`<i class="far fa-calendar-alt"></i>`);
+         var facebookPage = $("<a>").attr("href", response.facebook_page_url).attr("target", "_blank");
+        facebookPage.append(`<i class="fa fa-facebook-official" style="font-size:100px"></i>`);
+         var facebookText = $("<h4>").text(" Facebook Page ");
+         var goToArtist = $("<a>").attr("href", response.url);
+ 
           // Empty the contents of the artist-div, append the new artist content
           $("#dataDrop1").empty();
           $("#dataDrop2").empty();
           $("#dataDrop1").append(artistURL, artistImage);
- -        $("#dataDrop2").append(facebookText); 
- -        if(response.facebook_page_url != "")
- -        {
- -          $("#dataDrop2").append(facebookPage);
- -        }
- -        $("#dataDrop2").append(goToArtist);
- +        $("#dataDrop2").append(upcomingEvents, goToArtist);
+         $("#dataDrop2").append(facebookPage); 
+         if(response.facebook_page_url != "")
+         {
+          $("#dataDrop2").append(facebookPage);
+         }
+         $("#dataDrop2").append(goToArtist);
+         $("#dataDrop2").append(goToArtist);
       });
   };
   
- @@ -244,5 +236,17 @@ $("#search-btn").on("click", function(event) {
+     $("#search-btn").on("click", function(event) {
+        var inputArtist =$("#query").val().trim();
       searchBandsInTown(inputArtist);
   });
   
- +// Calling an initial band on page load
- +
- +var initialArtist = "Metallica";
- +
- +$(document).ready(function() {
- +
- +    searchBandsInTown(initialArtist);
- +
- +});
+ // Calling an initial band on page load
+ 
+ var initialArtist = "Metallica";
+ 
+ $(document).ready(function() {
+ 
+     searchBandsInTown(initialArtist);
+ 
+ });
 // ******************************************************************* //
  
 
