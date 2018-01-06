@@ -212,7 +212,6 @@ var queryURL = "https://rest.bandsintown.com/artists/" + artist + "?app_id=codin
 
         var artistName = $("<h1>").text(response.name);
          var artistURL = $("<a>").attr("href", response.url).append(artistName).attr("target", "_blank");
-         var artistURL = $("<a>").attr("href", response.url).append(artistName);
           var artistImage = $("<img>").attr("src", response.thumb_url);
           var trackerCount = $("<h3>").text(response.tracker_count + " fans tracking this artist");
           var upcomingEvents = $("<h3>").text(response.upcoming_event_count + " upcoming events");
