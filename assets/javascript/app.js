@@ -16,7 +16,7 @@ $(function() {
 
 });
 
-function search() {
+function search(artist) {
 
     // clear 
     $('#results').html('');
@@ -26,14 +26,42 @@ function search() {
     q = $('#query').val();
     
     // run get request on API
-    $.get(
-        "https://www.googleapis.com/youtube/v3/search", {
-            part: 'snippet, id',
-            q: q,
-            type: 'video',
-            key: gapikey
-        }, function(data) {
-            var nextPageToken = data.nextPageToken;
+    // $.get(
+    //     "https://www.googleapis.com/youtube/v3/search", {
+    //         part: 'snippet, id',
+    //         q: q,
+    //         type: 'video',
+    //         key: gapikey
+    //     }, function(data) {
+    //         var nextPageToken = data.nextPageToken;
+    //         var prevPageToken = data.prevPageToken;
+            
+    //         // Log data
+    //         console.log(data);
+            
+    //         $.each(data.items, function(i, item) {
+                
+    //             // Get Output
+    //             var output = getOutput(item);
+                
+    //             // display results
+    //             $('#results').append(output);
+    //         });
+            
+    //         var buttons = getButtons(prevPageToken, nextPageToken);
+            
+    //         // Display buttons
+    //         $('#buttons').append(buttons);
+    //     });
+
+
+    $.ajax({
+        method: 'GET',
+        url: `https://www.googleapis.com/youtube/v3/search?&part=snippet,id&q=${artist}&type=video&key=${gapikey}`,
+        headers: 'Access-Control-Allow-Origin'
+    }).done((data)=>{
+        console.log(data);
+        var nextPageToken = data.nextPageToken;
             var prevPageToken = data.prevPageToken;
             
             // Log data
@@ -52,8 +80,8 @@ function search() {
             
             // Display buttons
             $('#buttons').append(buttons);
-        });
-}
+    });
+ };
 
 // Next page function
 function nextPage() {
@@ -239,7 +267,11 @@ var queryURL = "https://rest.bandsintown.com/artists/" + artist + "?app_id=codin
   
      $("#search-btn").on("click", function(event) {
         var inputArtist =$("#query").val().trim();
+        console.log(inputArtist);
       searchBandsInTown(inputArtist);
+      console.log(inputArtist);
+      
+    search(inputArtist);
   });
   
 // Calling an initial band on page load
