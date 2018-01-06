@@ -8,39 +8,30 @@
     messagingSenderId: "511275654319"
   };
   firebase.initializeApp(config);
+    
+  var database = firebase.database();
 
-    // VARIABLES
-    // --------------------------------------------------------------------------------
-    // Get a reference to the database service
-    var database = firebase.database();
-    // Setting initial value of our click counter variable to 0
-    var searchCounter = 0;
-    // FUNCTIONS + EVENTS
-    var musician = "";
-    // --------------------------------------------------------------------------------
-    // On Click of Button
-    $("#search-btn").on("click", function() {
-      // Add to searchCounter
-      searchCounter++;
+  $('#search-btn').on('click', function(){
 
-       // Get inputs
-       musician = $("#query").val().trim();
-       // Change what is saved in firebase
-       database.ref().set({
-      
-        musician: musician,
-        searchCount: searchCounter    
-      });
-    });
-
-    database.ref().on("value", function(snapshot) {
-        // Print the initial data to the console.
-        console.log(snapshot.val());
-        // Log the value of the various properties
+    // Retrieve user inputs from form
+    var query = $('#query').val().trim();
+ 
+    // Create an object for new train to be added
+    var newArtist = {
+      userSearched: query
+    }
+   
+    database.ref().push(newArtist);
   
-        console.log(snapshot.val().musician);
-        
-        // If any errors are experienced, log them to console.
-      }, function(errorObject) {
-        console.log("The read failed: " + errorObject.code);
-      });
+    $('#query').val('');
+
+    return false;
+  
+  });
+  
+  database.ref().on('child_added', function(childSnapshot, prevChildKey) {
+  
+    var query = childSnapshot.val().query;
+ 
+  });
+  
