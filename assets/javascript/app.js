@@ -225,7 +225,7 @@ var queryURL = "https://rest.bandsintown.com/artists/" + artist + "?app_id=codin
         $("#dataDrop1").empty();
         $("#dataDrop2").empty();
         $("#dataDrop1").append(artistURL, artistImage);
-        $("#dataDrop2").append(facebookText);
+        $("#dataDrop2").append(facebookText); 
         if(response.facebook_page_url != "")
         {
         	$("#dataDrop2").append(facebookPage);
