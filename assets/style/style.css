@@ -196,12 +196,6 @@ input {
     padding: 16px;
 }
 
-
-.map {
-    width: 200px;
-    height: 50px;
-}
-
 #maps {
     height: 200px;
     width: 100%;
@@ -209,6 +203,10 @@ input {
 
 .map-btn {
     color: black;
+}
+
+#locations {
+    overflow: auto;
 }
 
 /* ************************* */

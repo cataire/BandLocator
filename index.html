@@ -22,6 +22,9 @@
       <!-- Local CSS Stylesheet -->
       <link rel="stylesheet" href="assets/style/style.css">
 
+      <!-- Local Font-Awesome CSS Library -->
+      <link rel="stylesheet" href="assets/font-awesome/font-awesome.css">
+
       <!-- Remote Firebase Reference -->
       <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
       
@@ -31,7 +34,6 @@
       <!-- Remote Google Fonts Reference -->
       <link href="https://fonts.googleapis.com/css?family=Ceviche+One|Chewy|Freckle+Face|Indie+Flower|
         Permanent+Marker|Sedgwick+Ave+Display|Acme|Rokkitt|Londrina+Sketch|Ranga|Sirin+Stencil|Varela" rel="stylesheet">
-
 
     </head>
 
@@ -56,21 +58,21 @@
                     <div class="panel panelOne">
 
                         <div class="panel-heading">
-                            <h3 class="panel-title"><strong>Artist Search</strong></h3>
+                            <h3 class="panel-title"><i class="fa fa-music" aria-hidden="true"></i> <strong>Artist Search</strong></h3>
                         </div>
 
                         <div class="panel-body panelBodyOne">
                             <section>
                                 <form id="search-form" name="search-form" onsubmit="return search()">
                                     <div class="fieldcontainer">
-                                        <input type="search" id="query" class="search-field" placeholder="Search Band-Finder">
+                                        <input type="search" id="query" class="search-field" required="reguired" placeholder="Search Band-Finder">
                                         <input type="submit" name="search-btn" id="search-btn" value="Search">
                                     </div>
                                 </form>
                             </section>
                             <br>
-                            <div id="dataDrop1">Data Drop 1</div>
-                            <div id="dataDrop2">Data Drop 2</div>
+                            <div id="dataDrop1"></div>
+                            <div id="dataDrop2"></div>
                         </div>
 
                     </div>
@@ -84,14 +86,16 @@
                     <div class="panel panelTwo">
 
                         <div class="panel-heading">
-                            <h3 class="panel-title"><strong>Event Locator</strong></h3>
+                            <h3 class="panel-title"><i class="fa fa-calendar" aria-hidden="true"></i> <strong>Event Locator</strong></h3>
                         </div>
 
                         <div class="panel-body">
                             <div id="dataDrop4">
                                 <div id="events">
                                     <div id="maps">
-                                       
+                                    </div>
+                                    
+                                    <div id="locations">
                                     </div>
     
                                 </div>
@@ -109,7 +113,7 @@
                     <div class="panel panelThree">
 
                         <div class="panel-heading">
-                            <h3 class="panel-title"><strong>Videos</strong></h3>
+                            <h3 class="panel-title"><i class="fa fa-video-camera" aria-hidden="true"></i> <strong>Videos</strong></h3>
                         </div>
 
                         <div class="panel-body">
@@ -131,7 +135,7 @@
         <div id="footer">
                 
             <div id="footerText">
-                <p>© Copyright Code Rocks! DU Web Dev Bootcamp 2017/2018</p>
+                <p><i class="fa fa-copyright" aria-hidden="true"></i> Copyright Code Rocks! DU Web Dev Bootcamp 2017/2018</p>
             </div>
 
         </div>
@@ -142,17 +146,15 @@
         <!-- Remote Firebase API -->
         <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
 
+
+        <!-- Google Maps API -->
+         <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmYHEQwXA3bucxiXU2-23Dx-PnAOAO6NA&callback=initMap">
+        </script>
+        
         <!-- Local JavaScript File -->
         <script src="assets/javascript/app.js"></script>
-
-
-        
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
- <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmYHEQwXA3bucxiXU2-23Dx-PnAOAO6NA&callback=initMap">
-    </script>
-        
+        <script src="assets/javascript/firebase.js"></script>
 
     </body>
 

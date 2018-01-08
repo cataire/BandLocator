@@ -19,7 +19,7 @@ $(function() {
 
 });
 
-function search() {
+function search(artist) {
 
     // clear 
     $('#results').html('');
@@ -29,14 +29,42 @@ function search() {
     q = $('#query').val();
     
     // run get request on API
-    $.get(
-        "https://www.googleapis.com/youtube/v3/search", {
-            part: 'snippet, id',
-            q: q,
-            type: 'video',
-            key: gapikey
-        }, function(data) {
-            var nextPageToken = data.nextPageToken;
+    // $.get(
+    //     "https://www.googleapis.com/youtube/v3/search", {
+    //         part: 'snippet, id',
+    //         q: q,
+    //         type: 'video',
+    //         key: gapikey
+    //     }, function(data) {
+    //         var nextPageToken = data.nextPageToken;
+    //         var prevPageToken = data.prevPageToken;
+            
+    //         // Log data
+    //         console.log(data);
+            
+    //         $.each(data.items, function(i, item) {
+                
+    //             // Get Output
+    //             var output = getOutput(item);
+                
+    //             // display results
+    //             $('#results').append(output);
+    //         });
+            
+    //         var buttons = getButtons(prevPageToken, nextPageToken);
+            
+    //         // Display buttons
+    //         $('#buttons').append(buttons);
+    //     });
+
+
+    $.ajax({
+        method: 'GET',
+        url: `https://www.googleapis.com/youtube/v3/search?&part=snippet,id&q=${artist}&type=video&key=${gapikey}`,
+        headers: 'Access-Control-Allow-Origin'
+    }).done((data)=>{
+        console.log(data);
+        var nextPageToken = data.nextPageToken;
             var prevPageToken = data.prevPageToken;
             
             // Log data
@@ -55,8 +83,8 @@ function search() {
             
             // Display buttons
             $('#buttons').append(buttons);
-        });
-}
+    });
+ };
 
 // Next page function
 function nextPage() {
@@ -213,25 +241,45 @@ var queryURL = "https://rest.bandsintown.com/artists/" + artist + "?app_id=codin
         // Printing the entire object to console
         console.log(response);
 
-        // Constructing HTML containing the artist information
+
         var artistName = $("<h1>").text(response.name);
-        var artistURL = $("<a>").attr("href", response.url).append(artistName);
-        var artistImage = $("<img>").attr("src", response.thumb_url);
-        var trackerCount = $("<h3>").text(response.tracker_count + " fans tracking this artist");
-        var upcomingEvents = $("<h3>").text(response.upcoming_event_count + " upcoming events");
-        var goToArtist = $("<a>").attr("href", response.url).text("See Tour Dates");
+         var artistURL = $("<a>").attr("href", response.url).append(artistName).attr("target", "_blank");
+          var artistImage = $("<img>").attr("src", response.thumb_url);
+          var trackerCount = $("<h3>").text(response.tracker_count + " fans tracking this artist");
+          var upcomingEvents = $("<h3>").text(response.upcoming_event_count + " upcoming events");
+         var goToArtist = $("<a>").attr("href", response.url).attr("target", "_blank");
+         // goToArtist.append(`<i class="far fa-calendar-alt"></i>`);
+         var facebookPage = $("<a>").attr("href", response.facebook_page_url).attr("target", "_blank");
+        facebookPage.append(`<i class="fa fa-facebook-official" style="font-size:100px"></i>`);
+         var facebookText = $("<h4>").text(" Facebook Page ");
+         var goToArtist = $("<a>").attr("href", response.url);
+ 
+          // Empty the contents of the artist-div, append the new artist content
+          $("#dataDrop1").empty();
+          $("#dataDrop2").empty();
+          $("#dataDrop1").append(artistURL, artistImage);
+         $("#dataDrop2").append(facebookPage); 
+         if(response.facebook_page_url != "")
+         {
+          $("#dataDrop2").append(facebookPage);
+         }
+         $("#dataDrop2").append(goToArtist);
+         $("#dataDrop2").append(goToArtist);
+      });
+  };
+  
+     $("#search-btn").on("click", function(event) {
+        var inputArtist =$("#query").val().trim();
+        console.log(inputArtist);
+      searchBandsInTown(inputArtist);
+      console.log(inputArtist);
+      
+    search(inputArtist);
+    searchEvent(inputArtist);
+  });
 
-        // Empty the contents of the artist-div, append the new artist content
-        $("#dataDrop1").empty();
-        $("#dataDrop2").empty();
-        $("#dataDrop1").append(artistURL, artistImage);
-        $("#dataDrop2").append(upcomingEvents, goToArtist);
-    });
-};
 
-// Function to get event location info
-
-function searchEvent(artist) {
+ function searchEvent(artist) {
 
 var queryURL = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
 
@@ -265,17 +313,17 @@ $.ajax({
 
 
 
-    $("#events").append(eventInfo);
+    $("#locations").append(eventInfo);
 
     var br = $("<br>");
-    $("#events").append(br);
+    $("#locations").append(br);
 
     var mapBtn = $("<button>").text("See it on a map");
     mapBtn.addClass("map-btn");
     mapBtn.attr('data-lat', venueLatitude);
     mapBtn.attr('data-long', venueLongitude);
-    $("#events").append(mapBtn);
-    $("#events").append(br);
+    $("#locations").append(mapBtn);
+    $("#locations").append(br);
     
     };
 
@@ -305,22 +353,25 @@ $.ajax({
         //New map
         var map = new google.maps.Map(document.getElementById('maps'), mapOptions);
         
+         var marker = new google.maps.Marker({
+          position: {lat: latitude, lng: longitude},
+          map: map
+        });
 
-      }
+      }    
+  
+// Calling an initial band on page load
 
-// Event handler for user clicking the select-artist button
-$("#search-btn").on("click", function(event) {
-    
-    // Storing the artist name
-    var inputArtist = $("#query").val().trim();
+var initialArtists = ["Metallica", "A7X", "U2", "Offspring", "Bruno Mars"];
+var initialArtist = initialArtists[Math.floor(Math.random() * initialArtists.length)];
 
-    // Running the searchBandsInTown function (passing in the artist as an argument)
-    searchBandsInTown(inputArtist);
-    searchEvent(inputArtist);
+$(document).ready(function() {
+
+    searchBandsInTown(initialArtist);
 });
 
 
-
 // ******************************************************************* //
+ 
 
 
