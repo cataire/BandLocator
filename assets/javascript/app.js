@@ -7,6 +7,7 @@
 
 var venueLatitude;
 var venueLongitude;
+var artistName;
 
 
 // Google/Youtube video finder AJAX - API
@@ -221,7 +222,7 @@ var queryURL = "https://rest.bandsintown.com/artists/" + artist + "?app_id=codin
         console.log(response);
 
 
-        var artistName = $("<h1>").text(response.name);
+        artistName = $("<h1>").text(response.name);
         var artistURL = $("<a>").attr("href", response.url).append(artistName).attr("target", "_blank");
         var artistImage = $("<img>").attr("src", response.thumb_url);
         var trackerCount = $("<h3>").text(response.tracker_count + " fans tracking this artist");
@@ -250,11 +251,13 @@ var queryURL = "https://rest.bandsintown.com/artists/" + artist + "?app_id=codin
      $("#search-btn").on("click", function(event) {
         var inputArtist =$("#query").val().trim();
         console.log(inputArtist);
-      searchBandsInTown(inputArtist);
-      console.log(inputArtist);
-      $("#locations").empty();
-    search(inputArtist);
-    searchEvent(inputArtist);
+        searchBandsInTown(inputArtist);
+
+        $("#locations").empty();
+        $("#locations").append(`<h4 id="locationsTitle">Event locations:</h4>`);
+
+        search(inputArtist);
+        searchEvent(inputArtist);
   });
 
 
@@ -278,47 +281,55 @@ $.ajax({
     var eventDateFormat;
     
 
-    for (var index = 0; index < response.length; index++) {
-    
-    venueName = response[index].venue.name;
-    eventDate = response[index].datetime;
-    venueCity = response[index].venue.city;
-    venueCountry = response[index].venue.country;
-    venueLatitude = parseFloat(response[index].venue.latitude);
-    venueLongitude = parseFloat(response[index].venue.longitude);
-    eventDateFormat = moment(eventDate).format("MMMM DD YYYY HH:mm");
+        for (var index = 0; index < response.length; index++) {
+        
+        venueName = response[index].venue.name;
+        eventDate = response[index].datetime;
+        venueCity = response[index].venue.city;
+        venueCountry = response[index].venue.country;
+        venueLatitude = parseFloat(response[index].venue.latitude);
+        venueLongitude = parseFloat(response[index].venue.longitude);
+        eventDateFormat = moment(eventDate).format("MMMM DD YYYY HH:mm");
 
 
-    eventInfo = ("<h4>" + venueCountry + " " + venueCity + " " 
-        + venueName + " " + eventDateFormat + "</h4>");
+        eventInfo = (`<h4>${venueCountry} ${venueCity} ${venueName} ${eventDateFormat}</h4>`);
 
 
+       
 
-    $("#locations").append(eventInfo);
+        $("#locations").append(eventInfo);
 
-    var mapBtn = $("<button>").text("See it on map");
-    mapBtn.addClass("map-btn");
-    mapBtn.attr('data-lat', venueLatitude);
-    mapBtn.attr('data-long', venueLongitude);
-    $("#locations").append(mapBtn);
-    
-    };
+        var mapBtn = $("<button>").text("See it on map");
+        mapBtn.addClass("map-btn");
+        mapBtn.attr('data-lat', venueLatitude);
+        mapBtn.attr('data-long', venueLongitude);
+        $("#locations").append(mapBtn);
 
-    $(".map-btn").on("click", function(){
-        console.log(this);
-    const lat = $(this).attr('data-lat')
-    const long = $(this).attr('data-long');
-    console.log('Clicked', lat, long);
 
-    initMap(+lat, +long);
+        
+        }; // loop closing
 
-}); 
+            $(".map-btn").on("click", function(){
+            const lat = $(this).attr('data-lat')
+            const long = $(this).attr('data-long');
+
+            initMap(+lat, +long);
+
+            }); 
+
+            if (response.length === 0) {
+            $("#locations").empty();
+            $("#locations").html(`<h3 id="locationsTitle">This band has no upcoming events but you can check out their amazing videos below</h3>`);
+        };
+
     });
+
+
 
 };
 
 
-
+//Map function
       function initMap(latitude = 39.7392, longitude = -104.9903){
         console.log(latitude, longitude, 'here is what we are passing');
         // Map Options
@@ -337,7 +348,7 @@ $.ajax({
 
       }    
   
-// Calling an initial Aritist on page load
+// Calling an initial Artist on page load
 
 var initialArtists = ["Metallica", "A7X", "U2", "Offspring", "Bruno Mars", "Boz Scaggs", "Katy Perry", 
                         "Wyclef Jean", "Kid Rock", "Collective Soul", "Bryan Adams", "Kenny Chesney"];
@@ -346,6 +357,7 @@ var initialArtist = initialArtists[Math.floor(Math.random() * initialArtists.len
 $(document).ready(function() {
 
     searchBandsInTown(initialArtist);
+    $("#locations").append(`<h4 id="locationsTitle">Event locations:</h4>`);
     searchEvent(initialArtist);
 
   });
