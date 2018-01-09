@@ -131,6 +131,7 @@ input {
 
 #locations {
     margin-top: 15px;
+    margin-right: -15px;
     border-top: 1px solid rgba(229, 228, 226, 0.75);
     height: 220px;
     overflow-y: scroll;
