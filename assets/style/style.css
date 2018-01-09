@@ -73,7 +73,7 @@ body {
 .panel {
     background-color: rgba(0, 0, 0, 0.75);
     height: 500px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.3);
     
 }
 
@@ -91,8 +91,9 @@ body {
     width: 30%;
 }
 
-.panelTwo {
-    
+.locations {
+    margin-top: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .panelThree {
@@ -120,6 +121,27 @@ form {
 input {
     color: black;
     margin-top: 3px;
+}
+
+#maps {
+    height: 200px;
+    width: 100%;
+}
+
+.map-btn {
+    color: black;
+    margin-bottom: 10px;
+}
+
+#locations {
+    margin-top: 15px;
+    height: 220px;
+    overflow-y: scroll;
+    border-top: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+#locationTitle {
+    color: rgba(255, 215, 0, .75);
 }
 
 /* Google/YouTube API Drop */
@@ -196,21 +218,6 @@ input {
     font-size: 16px;
     font-weight: bold;
     padding: 16px;
-}
-
-#maps {
-    height: 200px;
-    width: 100%;
-}
-
-.map-btn {
-    color: black;
-    margin-bottom: 10px;
-}
-
-#locations {
-    height: 235px;
-    overflow-y: scroll;
 }
 
 /* ************************* */
