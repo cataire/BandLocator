@@ -296,7 +296,7 @@ $.ajax({
 
     $("#locations").append(eventInfo);
 
-    var mapBtn = $("<button>").text("See it on a map");
+    var mapBtn = $("<button>").text("See it on map");
     mapBtn.addClass("map-btn");
     mapBtn.attr('data-lat', venueLatitude);
     mapBtn.attr('data-long', venueLongitude);
@@ -337,15 +337,17 @@ $.ajax({
 
       }    
   
-// Calling an initial band on page load
+// Calling an initial Aritist on page load
 
-var initialArtists = ["Metallica", "A7X", "U2", "Offspring", "Bruno Mars"];
+var initialArtists = ["Metallica", "A7X", "U2", "Offspring", "Bruno Mars", "Boz Scaggs", "Katy Perry", 
+                        "Wyclef Jean", "Kid Rock", "Collective Soul", "Bryan Adams"];
 var initialArtist = initialArtists[Math.floor(Math.random() * initialArtists.length)];
 
 $(document).ready(function() {
 
     searchBandsInTown(initialArtist);
     searchEvent(initialArtist);
+
   });
   
 
