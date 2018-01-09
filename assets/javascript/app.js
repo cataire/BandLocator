@@ -294,6 +294,7 @@ $.ajax({
     var venueName;
     var eventDate;
     var venueCity;
+    var venueCountry;
     var mapLink;
     var eventDateFormat;
     
@@ -303,27 +304,24 @@ $.ajax({
     venueName = response[index].venue.name;
     eventDate = response[index].datetime;
     venueCity = response[index].venue.city;
+    venueCountry = response[index].venue.country;
     venueLatitude = parseFloat(response[index].venue.latitude);
     venueLongitude = parseFloat(response[index].venue.longitude);
     eventDateFormat = moment(eventDate).format("MMMM DD YYYY HH:MM");
 
 
-    eventInfo = (venueCity + " " 
-        + eventDateFormat + " " + venueName + "<br>" );
+    eventInfo = ("<h5>" + venueCountry + " " + venueCity + " " 
+        + venueName + " " + eventDateFormat + "</h5>");
 
 
 
     $("#locations").append(eventInfo);
-
-    var br = $("<br>");
-    $("#locations").append(br);
 
     var mapBtn = $("<button>").text("See it on a map");
     mapBtn.addClass("map-btn");
     mapBtn.attr('data-lat', venueLatitude);
     mapBtn.attr('data-long', venueLongitude);
     $("#locations").append(mapBtn);
-    $("#locations").append(br);
     
     };
 
@@ -368,6 +366,7 @@ var initialArtist = initialArtists[Math.floor(Math.random() * initialArtists.len
 $(document).ready(function() {
 
     searchBandsInTown(initialArtist);
+    searchEvent(initialArtist);
 });
 
 
