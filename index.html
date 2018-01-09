@@ -12,7 +12,7 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
     
-      <title>Code Rocks! Super Band Locator</title>
+      <title>Code Rocks! Super Band Finder</title>
       <link rel="shortcut icon" type="image/png" href="assets/images/guitar.jpg">
       
       <!-- Local CSS Normalizer File -->
@@ -27,8 +27,11 @@
       <!-- Local Font-Awesome CSS Library -->
       <link rel="stylesheet" href="assets/font-awesome/font-awesome.css">
 
-      <!-- Remote Firebase Database Reference -->
+      <!-- Remote Firebase Reference -->
       <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+      
+      <!-- Remote Moment.js Reference -->
+      <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
       <!-- Remote Google Fonts Reference -->
       <link href="https://fonts.googleapis.com/css?family=Ceviche+One|Chewy|Freckle+Face|Indie+Flower|
@@ -93,9 +96,10 @@
                                 <div id="events">
                                     <div id="maps">
                                     </div>
+                                    
                                     <div id="locations">
-                                        <h4 id="locationTitle">Event Locations:</h4>
                                     </div>
+    
                                 </div>
                             </div>
                         </div>
