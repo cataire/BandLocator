@@ -11,6 +11,13 @@ var venueLongitude;
 
 // Google/Youtube video finder AJAX - API
 
+var videoArtist;
+
+$("#search-btn").on("click", function() {
+    videoArtist =$("#query").val();
+});
+
+
 var gapikey = 'AIzaSyCKMpw2nmPnon_gkh4EIXnbiAmrZNw-v4M';
 
 $(function() {
@@ -29,36 +36,6 @@ function search(artist) {
     
     // get form input
     q = $('#query').val();
-    
-    // run get request on API
-    // $.get(
-    //     "https://www.googleapis.com/youtube/v3/search", {
-    //         part: 'snippet, id',
-    //         q: q,
-    //         type: 'video',
-    //         key: gapikey
-    //     }, function(data) {
-    //         var nextPageToken = data.nextPageToken;
-    //         var prevPageToken = data.prevPageToken;
-            
-    //         // Log data
-    //         console.log(data);
-            
-    //         $.each(data.items, function(i, item) {
-                
-    //             // Get Output
-    //             var output = getOutput(item);
-                
-    //             // display results
-    //             $('#results').append(output);
-    //         });
-            
-    //         var buttons = getButtons(prevPageToken, nextPageToken);
-            
-    //         // Display buttons
-    //         $('#buttons').append(buttons);
-    //     });
-
 
     $.ajax({
         method: 'GET',
@@ -103,7 +80,7 @@ function nextPage() {
     
     // run get request on API
     $.get(
-        "https://www.googleapis.com/youtube/v3/search", {
+        `https://www.googleapis.com/youtube/v3/search?&part=snippet,id&q=${videoArtist}&type=video&key=${gapikey}`, {
             part: 'snippet, id',
             q: q,
             pageToken: token,
@@ -148,7 +125,7 @@ function prevPage() {
     
     // run get request on API
     $.get(
-        "https://www.googleapis.com/youtube/v3/search", {
+        `https://www.googleapis.com/youtube/v3/search?&part=snippet,id&q=${videoArtist}&type=video&key=${gapikey}`, {
             part: 'snippet, id',
             q: q,
             pageToken: token,
@@ -245,28 +222,28 @@ var queryURL = "https://rest.bandsintown.com/artists/" + artist + "?app_id=codin
 
 
         var artistName = $("<h1>").text(response.name);
-         var artistURL = $("<a>").attr("href", response.url).append(artistName).attr("target", "_blank");
-          var artistImage = $("<img>").attr("src", response.thumb_url);
-          var trackerCount = $("<h3>").text(response.tracker_count + " fans tracking this artist");
-          var upcomingEvents = $("<h3>").text(response.upcoming_event_count + " upcoming events");
-         var goToArtist = $("<a>").attr("href", response.url).attr("target", "_blank");
+        var artistURL = $("<a>").attr("href", response.url).append(artistName).attr("target", "_blank");
+        var artistImage = $("<img>").attr("src", response.thumb_url);
+        var trackerCount = $("<h3>").text(response.tracker_count + " fans tracking this artist");
+        var upcomingEvents = $("<h3>").text(response.upcoming_event_count + " upcoming events");
+        var goToArtist = $("<a>").attr("href", response.url).attr("target", "_blank");
          // goToArtist.append(`<i class="far fa-calendar-alt"></i>`);
-         var facebookPage = $("<a>").attr("href", response.facebook_page_url).attr("target", "_blank");
+        var facebookPage = $("<a>").attr("href", response.facebook_page_url).attr("target", "_blank");
         facebookPage.append(`<i class="fa fa-facebook-official" style="font-size:100px"></i>`);
-         var facebookText = $("<h4>").text(" Facebook Page ");
-         var goToArtist = $("<a>").attr("href", response.url);
+        var facebookText = $("<h4>").text(" Facebook Page ");
+        var goToArtist = $("<a>").attr("href", response.url);
  
-          // Empty the contents of the artist-div, append the new artist content
-          $("#dataDrop1").empty();
-          $("#dataDrop2").empty();
-          $("#dataDrop1").append(artistURL, artistImage);
-         $("#dataDrop2").append(facebookPage); 
-         if(response.facebook_page_url != "")
-         {
-          $("#dataDrop2").append(facebookPage);
-         }
-         $("#dataDrop2").append(goToArtist);
-         $("#dataDrop2").append(goToArtist);
+        // Empty the contents of the artist-div, append the new artist content
+        $("#dataDrop1").empty();
+        $("#dataDrop2").empty();
+        $("#dataDrop1").append(artistURL, artistImage);
+        $("#dataDrop2").append(facebookPage); 
+        if(response.facebook_page_url != "")
+        {
+         $("#dataDrop2").append(facebookPage);
+        }
+        $("#dataDrop2").append(goToArtist);
+        $("#dataDrop2").append(goToArtist);
       });
   };
   
