@@ -74,7 +74,7 @@ body {
     background-color: rgba(0, 0, 0, 0.75);
     height: 500px;
     border: 1px solid rgba(255, 255, 255, 0.3);
-    overflow: auto;
+    
 }
 
 #dataDrop1, #dataDrop2 {
@@ -97,6 +97,7 @@ body {
 
 .panelThree {
     margin-bottom: 80px;
+    overflow: auto;
 }
 
 .panel-heading {
@@ -208,7 +209,8 @@ input {
 }
 
 #locations {
-    overflow: auto;
+    height: 235px;
+    overflow-y: scroll;
 }
 
 /* ************************* */
