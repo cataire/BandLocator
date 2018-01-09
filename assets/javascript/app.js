@@ -4,6 +4,11 @@
 
 // ******************************************************************* //
 
+
+var venueLatitude;
+var venueLongitude;
+
+
 // Google/Youtube video finder AJAX - API
 
 var gapikey = 'AIzaSyCKMpw2nmPnon_gkh4EIXnbiAmrZNw-v4M';
@@ -272,6 +277,98 @@ var queryURL = "https://rest.bandsintown.com/artists/" + artist + "?app_id=codin
       console.log(inputArtist);
       
     search(inputArtist);
+    searchEvent(inputArtist);
+  });
+
+
+ function searchEvent(artist) {
+
+var queryURL = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
+
+$.ajax({
+    url: queryURL,
+    method: "GET"
+
+}).done(function(response) {
+    console.log(response);
+
+    var eventInfo;
+    var venueName;
+    var eventDate;
+    var venueCity;
+    var venueCountry;
+    var mapLink;
+    var eventDateFormat;
+    
+
+    for (var index = 0; index < response.length; index++) {
+    
+    venueName = response[index].venue.name;
+    eventDate = response[index].datetime;
+    venueCity = response[index].venue.city;
+    venueCountry = response[index].venue.country;
+    venueLatitude = parseFloat(response[index].venue.latitude);
+    venueLongitude = parseFloat(response[index].venue.longitude);
+    eventDateFormat = moment(eventDate).format("MMMM DD YYYY HH:MM");
+
+
+    eventInfo = ("<h5>" + venueCountry + " " + venueCity + " " 
+        + venueName + " " + eventDateFormat + "</h5>");
+
+
+
+    $("#locations").append(eventInfo);
+
+    var mapBtn = $("<button>").text("See it on a map");
+    mapBtn.addClass("map-btn");
+    mapBtn.attr('data-lat', venueLatitude);
+    mapBtn.attr('data-long', venueLongitude);
+    $("#locations").append(mapBtn);
+    
+    };
+
+    $(".map-btn").on("click", function(){
+        console.log(this);
+    const lat = $(this).attr('data-lat')
+    const long = $(this).attr('data-long');
+    console.log('Clicked', lat, long);
+
+    initMap(+lat, +long);
+
+}); 
+    });
+
+};
+
+
+
+      function initMap(latitude = 39.7392, longitude = -104.9903){
+        console.log(latitude, longitude, 'here is what we are passing');
+        // Map Options
+        var mapOptions = {
+          zoom: 10,
+          center: {lat: latitude, lng: longitude}
+        }
+
+        //New map
+        var map = new google.maps.Map(document.getElementById('maps'), mapOptions);
+        
+         var marker = new google.maps.Marker({
+          position: {lat: latitude, lng: longitude},
+          map: map
+        });
+
+      }    
+  
+// Calling an initial band on page load
+
+var initialArtists = ["Metallica", "A7X", "U2", "Offspring", "Bruno Mars"];
+var initialArtist = initialArtists[Math.floor(Math.random() * initialArtists.length)];
+
+$(document).ready(function() {
+
+    searchBandsInTown(initialArtist);
+    searchEvent(initialArtist);
   });
   
 // Calling an initial band on page load

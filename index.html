@@ -1,3 +1,4 @@
+
 <!-- Eric Goldstein, Karen Gertenbach, Maria Kuznetsova, Jeffrey Phelps - 
     DU Web Dev Bootcamp 2017/2018 - Week-8 Homework - Project 1 -->
 
@@ -12,6 +13,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
     
       <title>Code Rocks! Super Band Finder</title>
+      <link rel="shortcut icon" type="image/png" href="assets/images/guitar.jpg">
       
       <!-- Local CSS Normalizer File -->
       <link rel="stylesheet" href="assets/style/normalize.css" type="text/css" />
@@ -91,7 +93,14 @@
 
                         <div class="panel-body">
                             <div id="dataDrop4">
-                                
+                                <div id="events">
+                                    <div id="maps">
+                                    </div>
+                                    
+                                    <div id="locations">
+                                    </div>
+    
+                                </div>
                             </div>
                         </div>
 
@@ -139,10 +148,17 @@
         <!-- Remote Firebase API -->
         <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
 
+
+        <!-- Google Maps API -->
+         <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmYHEQwXA3bucxiXU2-23Dx-PnAOAO6NA&callback=initMap">
+        </script>
+        
         <!-- Local JavaScript File -->
         <script src="assets/javascript/app.js"></script>
         <script src="assets/javascript/firebase.js"></script>
 
     </body>
+
 
 </html>
