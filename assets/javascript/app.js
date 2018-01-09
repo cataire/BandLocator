@@ -286,7 +286,7 @@ $.ajax({
     venueCountry = response[index].venue.country;
     venueLatitude = parseFloat(response[index].venue.latitude);
     venueLongitude = parseFloat(response[index].venue.longitude);
-    eventDateFormat = moment(eventDate).format("MMMM DD YYYY HH:MM");
+    eventDateFormat = moment(eventDate).format("MMMM DD YYYY HH:mm");
 
 
     eventInfo = ("<h4>" + venueCountry + " " + venueCity + " " 
