@@ -312,8 +312,8 @@ $.ajax({
     eventDateFormat = moment(eventDate).format("MMMM DD YYYY HH:MM");
 
 
-    eventInfo = ("<h5>" + venueCountry + " " + venueCity + " " 
-        + venueName + " " + eventDateFormat + "</h5>");
+    eventInfo = ("<h4>" + venueCountry + " " + venueCity + " " 
+        + venueName + " " + eventDateFormat + "</h4>");
 
 
 
