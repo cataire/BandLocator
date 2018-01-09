@@ -275,7 +275,7 @@ var queryURL = "https://rest.bandsintown.com/artists/" + artist + "?app_id=codin
         console.log(inputArtist);
       searchBandsInTown(inputArtist);
       console.log(inputArtist);
-      
+      $("#locations").empty();
     search(inputArtist);
     searchEvent(inputArtist);
   });
