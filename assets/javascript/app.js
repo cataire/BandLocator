@@ -371,16 +371,6 @@ $(document).ready(function() {
     searchEvent(initialArtist);
   });
   
-// Calling an initial band on page load
-
-var initialArtists = ["Metallica", "A7X", "U2", "Offspring", "Bruno Mars"];
-var initialArtist = initialArtists[Math.floor(Math.random() * initialArtists.length)];
-
-$(document).ready(function() {
-
-    searchBandsInTown(initialArtist);
-
-});
 
 
 // ******************************************************************* //
