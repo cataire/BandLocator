@@ -365,12 +365,12 @@ $.ajax({
 
      if (contentVisible == false) {
 
-        $("#maps").hide();
+        $("#events").hide();
         $("#dataDrop3").hide();
     }
 
     if (contentVisible == true) {
-        $("#maps").show();
+        $("#events").show();
         $("#dataDrop3").show();
     }
 
