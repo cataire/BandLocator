@@ -8,6 +8,7 @@
 var venueLatitude;
 var venueLongitude;
 var artistName;
+var contentVisible;
 
 
 // Google/Youtube video finder AJAX - API
@@ -217,7 +218,8 @@ var queryURL = "https://rest.bandsintown.com/artists/" + artist + "?app_id=codin
         url: queryURL,
         method: "GET"
     }).done(function(response) {
-
+contentVisible = true;
+showOrHide();
         // Printing the entire object to console
         console.log(response);
 
@@ -269,6 +271,9 @@ $.ajax({
     method: "GET"
 
 }).done(function(response) {
+    contentVisible = true;
+    showOrHide();
+    console.log("True" + contentVisible);
     console.log(response);
 
     var eventInfo;
@@ -324,13 +329,15 @@ $.ajax({
     })
      
      .fail(function(){
-    
+    contentVisible = false;
+    showOrHide();
+    console.log("False" + contentVisible);
     $("#dataDrop1").empty();
     $("#dataDrop2").empty();
     $("#dataDrop1").html(`<h3 id=failArtist">Artist not found</h3>`);
     $("#locations").empty();
-    $("#dataDrop3").empty();
-    $("#maps").empty();
+    // $("#dataDrop3").empty();
+    // $("#maps").empty();
     });
 
 
@@ -357,6 +364,22 @@ $.ajax({
 
       }    
   
+ function showOrHide() {
+
+     if (contentVisible == false) {
+
+        $("#maps").hide();
+        $("#dataDrop3").hide();
+    }
+
+    if (contentVisible == true) {
+        $("#maps").show();
+        $("#dataDrop3").show();
+    }
+
+}; 
+
+
 // Calling an initial Artist on page load
 
 var initialArtists = ["Metallica", "A7X", "U2", "Offspring", "Bruno Mars", "Boz Scaggs", "Katy Perry", 
