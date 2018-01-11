@@ -7,7 +7,7 @@
 
 var venueLatitude;
 var venueLongitude;
-var artistName;
+var artistName; //holds artist's name from response.name
 var contentVisible;
 
 
@@ -218,8 +218,8 @@ var queryURL = "https://rest.bandsintown.com/artists/" + artist + "?app_id=codin
         url: queryURL,
         method: "GET"
     }).done(function(response) {
-contentVisible = true;
-showOrHide();
+        contentVisible = true;
+        showOrHide();
         // Printing the entire object to console
         console.log(response);
 
@@ -253,7 +253,8 @@ showOrHide();
         var inputArtist =$("#query").val().trim();
         console.log(inputArtist);
         searchBandsInTown(inputArtist);
-
+        
+         //clearing events div and appending title
         $("#locations").empty();
         $("#locations").append(`<h4 id="locationsTitle">Event locations:</h4>`);
 
@@ -264,7 +265,7 @@ showOrHide();
 
  function searchEvent(artist) {
 
-var queryURL = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
+    var queryURL = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
 
 $.ajax({
     url: queryURL,
@@ -299,9 +300,10 @@ $.ajax({
 
 
        
-
+        //appending events   
         $("#locations").append(eventInfo);
 
+        // creating map buttons  
         var mapBtn = $("<button>").text("See it on map");
         mapBtn.addClass("map-btn");
         mapBtn.attr('data-lat', venueLatitude);
@@ -311,7 +313,8 @@ $.ajax({
 
         
         }; // loop closing
-
+            
+            //function to show a specific map for each button 
             $(".map-btn").on("click", function(){
             const lat = $(this).attr('data-lat')
             const long = $(this).attr('data-long');
@@ -319,7 +322,8 @@ $.ajax({
             initMap(+lat, +long);
 
             }); 
-
+    
+            // what happens if the artist has no upcoming events
             if (response.length === 0) {
             $("#locations").empty();
             $("#locations").html(`<h3 id="locationsTitle">This band has no upcoming events but you can check out their amazing videos below</h3>`);
@@ -327,15 +331,15 @@ $.ajax({
 
     })
      
+     // function to deal with empty input or if artist does not exist in the Bands in Town database
      .fail(function(){
     contentVisible = false;
     showOrHide();
+    
     $("#dataDrop1").empty();
     $("#dataDrop2").empty();
-    $("#dataDrop1").html(`<h3 id=failArtist">Artist not found</h3>`);
+    $("#dataDrop1").html(`<h3 id="failArtist">Artist not found</h3>`);
     $("#locations").empty();
-    // $("#dataDrop3").empty();
-    // $("#maps").empty();
     });
 
 
@@ -345,6 +349,7 @@ $.ajax({
 
 //Map function
       function initMap(latitude = 39.7392, longitude = -104.9903){
+          
         // Map Options
         var mapOptions = {
           zoom: 15,
@@ -353,7 +358,8 @@ $.ajax({
 
         //New map
         var map = new google.maps.Map(document.getElementById('maps'), mapOptions);
-        
+          
+        //New Marker
          var marker = new google.maps.Marker({
           position: {lat: latitude, lng: longitude},
           map: map
@@ -361,6 +367,7 @@ $.ajax({
 
       }    
   
+// function to hide all content if there is no input or no artist found 
  function showOrHide() {
 
      if (contentVisible == false) {
