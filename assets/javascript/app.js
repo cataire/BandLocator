@@ -330,6 +330,7 @@ $.ajax({
     $("#dataDrop1").html(`<h3 id=failArtist">Artist not found</h3>`);
     $("#locations").empty();
     $("#dataDrop3").empty();
+    $("#maps").empty();
     });
 
 
