@@ -273,7 +273,6 @@ $.ajax({
 }).done(function(response) {
     contentVisible = true;
     showOrHide();
-    console.log("True" + contentVisible);
     console.log(response);
 
     var eventInfo;
@@ -347,7 +346,6 @@ $.ajax({
 
 //Map function
       function initMap(latitude = 39.7392, longitude = -104.9903){
-        console.log(latitude, longitude, 'here is what we are passing');
         // Map Options
         var mapOptions = {
           zoom: 15,
