@@ -96,6 +96,11 @@ h1 {
     margin-top: -10px;
 }
 
+#dataDrop1 h3 {
+    color: red;
+    font-weight: bolder;
+}
+
 #dataDrop2 {
     width: 30%;
     margin-top: 100px;
