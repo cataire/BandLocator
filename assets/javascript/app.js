@@ -330,7 +330,6 @@ $.ajax({
      .fail(function(){
     contentVisible = false;
     showOrHide();
-    console.log("False" + contentVisible);
     $("#dataDrop1").empty();
     $("#dataDrop2").empty();
     $("#dataDrop1").html(`<h3 id=failArtist">Artist not found</h3>`);
