@@ -387,7 +387,9 @@ $.ajax({
 // Calling an initial Artist on page load
 
 var initialArtists = ["Metallica", "A7X", "U2", "Offspring", "Bruno Mars", "Boz Scaggs", "Katy Perry", 
-                        "Wyclef Jean", "Kid Rock", "Collective Soul", "Bryan Adams", "Kenny Chesney"];
+                        "Wyclef Jean", "Kid Rock", "Collective Soul", "Bryan Adams", "Kenny Chesney", 
+                        "Eagles", "Maroon 5", "Foreigner", "Shania Twain", "Brad Paisley", "pink", 
+                        "Steely Dan", "Bon Jovi", "Brit Floyd", ];
 var initialArtist = initialArtists[Math.floor(Math.random() * initialArtists.length)];
 
 $(document).ready(function() {
