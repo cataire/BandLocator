@@ -321,6 +321,15 @@ $.ajax({
             $("#locations").html(`<h3 id="locationsTitle">This band has no upcoming events but you can check out their amazing videos below</h3>`);
         };
 
+    })
+     
+     .fail(function(){
+    console.log("ERROR");
+    $("#dataDrop1").empty();
+    $("#dataDrop2").empty();
+    $("#dataDrop1").html(`<h3 id=failArtist">Artist not found</h3>`);
+    $("#locations").empty();
+    $("#dataDrop3").empty();
     });
 
 
