@@ -277,10 +277,10 @@ $.ajax({
     console.log(response);
 
     var eventInfo;
-    var venueName;
+//     var venueName;
     var eventDate;
-    var venueCity;
-    var venueCountry;
+//     var venueCity;
+//     var venueCountry;
     var mapLink;
     var eventDateFormat;
     
