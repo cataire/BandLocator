@@ -8,7 +8,7 @@
 var venueLatitude;
 var venueLongitude;
 var artistName; //holds artist's name from response.name
-var contentVisible;
+var contentVisible; //holds true or false value for function to show or hide content
 
 
 // Google/Youtube video finder AJAX - API
