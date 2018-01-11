@@ -244,7 +244,6 @@ var queryURL = "https://rest.bandsintown.com/artists/" + artist + "?app_id=codin
          $("#dataDrop2").append(facebookPage);
         }
         $("#dataDrop2").append(goToArtist);
-        $("#dataDrop2").append(goToArtist);
       });
   };
   
@@ -359,6 +358,8 @@ $(document).ready(function() {
     searchBandsInTown(initialArtist);
     $("#locations").append(`<h4 id="locationsTitle">Event locations:</h4>`);
     searchEvent(initialArtist);
+    search(initialArtist);
+    videoArtist = initialArtist;
 
   });
   
