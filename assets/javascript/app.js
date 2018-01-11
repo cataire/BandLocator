@@ -350,7 +350,7 @@ $.ajax({
         console.log(latitude, longitude, 'here is what we are passing');
         // Map Options
         var mapOptions = {
-          zoom: 10,
+          zoom: 15,
           center: {lat: latitude, lng: longitude}
         }
 
