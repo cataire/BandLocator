@@ -1,11 +1,6 @@
 // Initialize Firebase
   var config = {
-    apiKey: "AIzaSyA-msJPurSl5Th8tFGBvRH5b5T4SRuiZK0",
-    authDomain: "bandlocator-a80b4.firebaseapp.com",
-    databaseURL: "https://bandlocator-a80b4.firebaseio.com",
-    projectId: "bandlocator-a80b4",
-    storageBucket: "bandlocator-a80b4.appspot.com",
-    messagingSenderId: "511275654319"
+//     removed to prevent costs
   };
   firebase.initializeApp(config);
     
